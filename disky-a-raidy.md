@@ -16,7 +16,7 @@
 
 * Pokud nevíme co napsat do sloupce options můžeme zadat defaults
 
-* Dump a pass jsou nepodstatné u root file systému by měly být 0 1 u ostatních 0 0 
+* Dump a pass jsou nepodstatné u root file systému by měly být 0 1 u ostatních 0 0
 
 ## Připojování disku
 
@@ -33,9 +33,9 @@
 10. odpojíme umístní /tmp/sdX -&gt; `umount /tmp/sdX`
 11. **df** - zobrazuje zaplnění disků
 
+{% panel %}
 
+Panel without title.
 
-
-
-
+{% endpanel %}
 
