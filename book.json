@@ -1,5 +1,5 @@
 {
-    "gitbook": "2.x.x",
+    "gitbook": "3.2.3",
     "plugins": ["panel"],
     "pdf": {
         "pageNumbers": false,
