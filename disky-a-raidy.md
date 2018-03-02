@@ -36,8 +36,6 @@
 
 
 {% panel style="warning", title="This is a warning panel" %}
-
 Panel with title and warning style.
-
 {% endpanel %}
 
