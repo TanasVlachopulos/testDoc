@@ -39,3 +39,7 @@
 Panel with title and warning style.
 {% endpanel %}
 
+> **[warning] For warning**
+>
+> Use this for warning messages.
+
