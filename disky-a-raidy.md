@@ -33,11 +33,7 @@
 10. odpojíme umístní /tmp/sdX -&gt; `umount /tmp/sdX`
 11. **df** - zobrazuje zaplnění disků
 
-{% panel title="This is a panel with title" %}
 
-Panel with title and default style.
-
-{% endpanel %}
 
 
 
