@@ -32,3 +32,12 @@
 9. aplikujeme záznamy z fstabu `mount -a`
 10. odpojíme umístní /tmp/sdX -&gt; `umount /tmp/sdX`
 11. **df** - zobrazuje zaplnění disků
+
+
+
+{% panel style="warning", title="This is a warning panel" %}
+
+Panel with title and warning style.
+
+{% endpanel %}
+
