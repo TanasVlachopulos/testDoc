@@ -1,0 +1,4 @@
+# Kompilace Kernelu
+
+$$$$
+
