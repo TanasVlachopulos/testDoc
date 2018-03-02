@@ -1,6 +1,6 @@
 {
     "gitbook": "2.x.x",
-    "plugins": ["katex", "include", "mermaid"],
+    "plugins": ["panel"],
     "links": {
         "sidebar": {
             "Contact us": "mailto:contact@example.org"
