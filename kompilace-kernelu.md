@@ -1,4 +1,4 @@
 # Kompilace Kernelu
 
-$$$$
+libelf-dev
 
