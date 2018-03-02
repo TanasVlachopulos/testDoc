@@ -34,8 +34,6 @@
 11. **df** - zobrazuje zaplnění disků
 
 {% panel %}
-
 Panel without title.
-
 {% endpanel %}
 
