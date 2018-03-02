@@ -1,12 +1,6 @@
 {
     "gitbook": "2.x.x",
     "plugins": ["panel"],
-    "links": {
-        "sidebar": {
-            "Contact us": "mailto:contact@example.org"
-        }
-    },
-
     "pdf": {
         "pageNumbers": false,
         "fontSize": 12,
