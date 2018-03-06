@@ -28,7 +28,9 @@ done
 
 Pomocí `make mrproper` jde udělat clean složky s kernelem \(smažou se všechny konfigurace a předkompilované moduly\).
 
+Alternativně jde místo `make deb-pkg` zkompilovat pouze pomocí `make` a po kompilaci zavolat `make install` a `make modules_install` což přidá soubory kernelu do složky /boot a nainstaluje všechny moduly které zkomiloval
 
+Pokud chceme do jádra přidat další modul nemusíme spouštět kompilaci znovu, stačí zkompilovat jenom požadované moduly a pak zavolat make modules\_install.
 
 #### Ověření
 
