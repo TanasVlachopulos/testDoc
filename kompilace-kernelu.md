@@ -40,9 +40,9 @@ modprobe - přidá do jádra nový modul
 
 rmmod - odinstaluje modul
 
+insmod modul.ko - instalace modulu
+
 Jádro a moduly nemohou zapisovat do SDOUT, proto zapisují informace o sobě do složky /proc kde jsou informace z modulů jádra a také výstupy s některých spuštěných procesů, které jsou zde reprezentovány svým PID.
-
-
 
 #### Ověření
 
