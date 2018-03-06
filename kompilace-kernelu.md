@@ -32,6 +32,10 @@ Alternativně jde místo `make deb-pkg` zkompilovat pouze pomocí `make` a po ko
 
 Pokud chceme do jádra přidat další modul nemusíme spouštět kompilaci znovu, stačí zkompilovat jenom požadované moduly a pak zavolat make modules\_install.
 
+lsmod
+
+modinfo module
+
 #### Ověření
 
 Při startu by měl být vidět custom název kernelu z pole **local version **v configu kernelu:
