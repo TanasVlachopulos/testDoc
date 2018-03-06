@@ -40,6 +40,10 @@ modprobe - přidá do jádra nový modul
 
 rmmod - odinstaluje modul
 
+Jádro a moduly nemohou zapisovat do SDOUT, proto zapisují informace o sobě do složky /proc kde jsou informace z modulů jádra a také výstupy s některých spuštěných procesů, které jsou zde reprezentovány svým PID.
+
+
+
 #### Ověření
 
 Při startu by měl být vidět custom název kernelu z pole **local version **v configu kernelu:
