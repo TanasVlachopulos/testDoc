@@ -32,9 +32,13 @@ Alternativně jde místo `make deb-pkg` zkompilovat pouze pomocí `make` a po ko
 
 Pokud chceme do jádra přidat další modul nemusíme spouštět kompilaci znovu, stačí zkompilovat jenom požadované moduly a pak zavolat make modules\_install.
 
-lsmod
+lsmod - vylistuje moduly
 
-modinfo module
+modinfo module - zobrazí informace o modulu
+
+modprobe - přidá do jádra nový modul
+
+rmmod - odinstaluje modul
 
 #### Ověření
 
