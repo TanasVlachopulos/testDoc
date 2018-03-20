@@ -95,15 +95,46 @@ v /srv/tftp/pxelinux.cfg se nastaví defaultní bootovací konfig
 ```
 DEFAULT vesamenu.c32
 PROMPT 0
- 
+
 MENU TITLE  Boot Menu
 
 LABEL Debian - NetBoot
 KERNEL /Debian/vmlinuz-3.16.0-4-686-pae
-APPEND initrd=/Debian/initrd.img-3.16.0-4-686-pae root=/dev/nfs nfsroot=192.168.57.2:/tftpboot/Debian/root ip=dhcp rw
+APPEND initrd=/Debian/initrd.img-3.16.0-4-686-pae root=/dev/nfs nfsroot=192.168.57.2:/tftpboot/Debian/root,udp ip=dhcp rw
 ```
 
+Položka kernel odkazuje na cestu na TFTP serveru \(ne lokální složka\) složku debian tam budeme muset vytvořit. V položce APPENDje cesta nfsroot, ta odkazyje na složky v adresáři tftp serveru, z kt. se stane na klientovi rootovský file system.
 
+u nfsroot je položka `,udp` toto je nesmírně důležité protože kdyby to tam nebylo snažil by se klient při bootu navazovat spojení s NFS server přes TCP, nicméně při bootvání dojde několikrát ke změně adresy a zhození spojení, TCP spojení pak vytimeoutuje na, proto se musí použít UDP, který není vázán na session
+
+Tento rootovský file system msuíme v sftp složce vytvořit, ty vytvoříme na základně aktuální struktury serveru, musíme kopírovat, nebo vytvořit následující složky, některé složky se musí překopírovat, některé není nutné protože jsou mapovány do paměti za běhu
+
+```
+bin -> cp
+boot -> cp
+dev
+etc -> cp
+home
+lib -> cp
+media
+mnt
+opt -> cp
+proc
+root -> cp
+run
+sbin -> cp
+srv -> cp
+sys
+tmp
+usr -> cp
+var -> cp
+```
+
+u /tmp se musí ještě změnit oprávnění `chmod 777 tmp/` a `chmod o+t tmp/`
+
+v nfs configu musíme nastavit export rootovského FS, s tím že povolíme no root squash, díky čemuž bude moci root editovat soubory `/tftpboot/Debian/root     192.168.57.0/24(rw,async,no_root_squash)`
+
+v distribouvaném root FS, musíme upravit některé soubory, které nechceme disribuovat na klienty, to je napíklad nastavení fstab a nastavení druhé síťové karty, kt. klient nemá
 
 
 
