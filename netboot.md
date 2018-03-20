@@ -1,4 +1,4 @@
-# Netboot
+# Netboot \(draft\)
 
 &gt; dpkg -L package vylistuje soubory balíku
 
