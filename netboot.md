@@ -134,7 +134,5 @@ u /tmp se musí ještě změnit oprávnění `chmod 777 tmp/` a `chmod o+t tmp/`
 
 v nfs configu musíme nastavit export rootovského FS, s tím že povolíme no root squash, díky čemuž bude moci root editovat soubory `/tftpboot/Debian/root     192.168.57.0/24(rw,async,no_root_squash)`
 
-v distribouvaném root FS, musíme upravit některé soubory, které nechceme disribuovat na klienty, to je napíklad nastavení fstab a nastavení druhé síťové karty, kt. klient nemá
-
-
+v distribouvaném root FS, musíme upravit některé soubory, které nechceme disribuovat na klienty, to je napíklad nastavení fstab a taky musíme smazat nastavení obou síťových karet, kt. klient nemá
 
