@@ -1,8 +1,6 @@
-# Netboot
+# Netboot
 
 &gt; dpkg -L package vylistuje soubory balíku
-
-
 
 **návod:**
 
@@ -10,7 +8,7 @@ vytvořit 2x virtuální počítač, na jedno nechat síťovou vou kartu s natem
 
 na VM 1 vytvořit DHCP server, nainstalovat `isc-dhcp-server`
 
-musíme dhcp server zapnout v /etc/default
+musíme dhcp server zapnout v /etc/default
 
 v /etc/dhcp/dhcpd.conf je konfigurace dhcp, je nutné nastavit option domain name a dostupný DNS server
 
@@ -22,41 +20,25 @@ restartujeme `service isc-dhcp-server restart`
 
 > autoritativní DNS server - server je schopen přiřazovat IP adresy i v sítích ve kerých neparticipuje
 >
->  NFS - network file system - mapuje vzdálený disk na lokální disk
-
-
+> NFS - network file system - mapuje vzdálený disk na lokální disk
 
 Na VM 1 nainstalujeme `nfs-kernel-server`
 
-
-
 NFS distribuuje soubory tak jak je na síťovém disku disku najde, tedy včetně user ID a group ID, což namená, že na serveru, který síťový disk namountuje musí mít uživatele se stejným ID a group ID, pokud se používí LDAP není to třeba moc řešit, ale pokud jsou uživatelé lokální je nutné ověřit  jestli tam stejný user existuje
-
-
 
 je nutné modifikovat \`/etc/exports\` kde se nastaví co se exportuje a kam se to exportuje
 
-
-
 ```
-/home    192.168.20.*(rw,sync,no_subtree_check)
+/home    192.168.20.*(rw,sync,no_subtree_check)
 ```
 
 \`exportfs\` ukáže jaké složky jsou kam exportovány
 
-
-
 je nutné nastavit na VM1 NAT v iptables a zapnout interní forwarding
-
-
 
 na VM2 nainstalujeme klienta NFS \`apt install nfs-common\`
 
-
-
 na VM2 namountujeme disk
-
-
 
 \`\`\`
 
@@ -64,39 +46,62 @@ mount 192.168.1.23:/home /home
 
 \`\`\`
 
-
-
 Defaultně se provádí export tak že do nfs nemůže zapisovat root
-
-
 
 pro zavedení systému přes síť je nutné zprovoznit TFTP server, který doručí kernel na bootovanou stanici
 
-
-
 na VM1 nainstalovat \`tftpd-hpa\` v /etc/default/tftpd-hpa je konfig
-
-
 
 do /srv/tftp jsou mapovány soubory kt. se distribuují přes tfpt, z testovacích důvodů tam plácneme nějaký soubor
 
-
-
 na VM2 nainstalujeme TFTP klienta \`tftp-hpa\` abychom otestovali funkčnost TFPT serveru
 
-
-
-\`\`\`
-
-connect IP\_serveru
-
+```
+connect IP_serveru
 binary
-
 get testovacisoubor.txt
+```
 
-\`\`\`
+Do složky distribuované tftp serverem nahrajeme sobory nutné pro netboot
 
+v konfiguraci DHCP serveru musíme ještě přidat informace o tom že má bootovat ze sítě, odkud to má stahovat, a jak\`\`
 
+```
+subnet 192.168.57.0 netmask 255.255.255.0 {
+range 192.168.57.100 192.168.57.200;
+option broadcast-address 192.168.57.255;
+option routers 192.168.57.2;
+next-server 192.168.57.2;
+filename "pxelinux.0";
+}
+```
+
+v nastavení virtualboxu je ještě nutné zapnout bootování ze sítě
+
+v složce sftp musíme mít tyto soubory pro boot, najdedeme je v připraveném balíku, ale jsou tam všelijak porozházené
+
+```
+Debian
+ldlinux.c32
+libcom32.c32
+libutil.c32
+pxelinux.cfg
+pxelinux.0
+vesamenu.c32
+```
+
+v /srv/tftp/pxelinux.cfg se nastaví defaultní bootovací konfig
+
+```
+DEFAULT vesamenu.c32
+PROMPT 0
+ 
+MENU TITLE  Boot Menu
+
+LABEL Debian - NetBoot
+KERNEL /Debian/vmlinuz-3.16.0-4-686-pae
+APPEND initrd=/Debian/initrd.img-3.16.0-4-686-pae root=/dev/nfs nfsroot=192.168.57.2:/tftpboot/Debian/root ip=dhcp rw
+```
 
 
 
