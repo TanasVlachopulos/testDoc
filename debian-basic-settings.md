@@ -24,7 +24,7 @@ service ssh restart
 
 Na všech interfacech zapnout dhcp klienta, nebo nastavit statickou adresu.
 
-U novějšího Debianu jsou interfacy číslovány enp0s3, enp0s8, ... 
+U novějšího Debianu jsou interfacy číslovány enp0s3, enp0s8, ...
 
 ```bash
 # Dynamic DHCP
@@ -39,7 +39,6 @@ iface eth1 inet static
         address 192.168.56.99
         netmask 255.255.255.0
         gateway 192.168.56.1
-
 ```
 
 ### Nastavení balíčků
@@ -47,7 +46,7 @@ iface eth1 inet static
 Odstranit cdrom balíčky z APT.
 
 ```
-sed -i '/cdrom/d' /etc/apt/source.list
+sed -i '/cdrom/d' /etc/apt/sources.list
 ```
 
 ### Nadbytečnosti
