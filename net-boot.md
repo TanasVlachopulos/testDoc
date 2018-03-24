@@ -29,9 +29,9 @@ Restartujeme síť `service networking restart` a znovu nahodíme adresu na NAT 
 
 Na VM1 nainstalujeme a nastavíme DHCP server, ten bude přidělovat adresu a další informace pro VM2. Nainstalujeme balík `isc-dhcp-server`
 
-DHCP server je defaultně vypnutý a musí se tedy zapnout v _/etc/defaul/isc-dhcp-server_, upraví se pouze řádek s konfigurací pro IPv4, tak aby distribuoval DHCP do sítě s VM2 `INTERFACESv4="enp0s8"`
+DHCP server je defaultně vypnutý a musí se tedy zapnout v **/etc/defaul/isc-dhcp-server**, upraví se pouze řádek s konfigurací pro IPv4, tak aby distribuoval DHCP do sítě s VM2 `INTERFACESv4="enp0s8"`
 
-V \_/etc/dhcp/dhcp.conf \_nastavíme **domain-name**, **domain-name-servers **\(adresa DNS serveru na kt. se budou forwardovat dotazy - ve školní síti musí být nastaven školní DNS\) a DHCP zónu, nakonec restartujeme server `service isc-dhcp-server restart`:
+V **/etc/dhcp/dhcp.conf** nastavíme **domain-name**, **domain-name-servers **\(adresa DNS serveru na kt. se budou forwardovat dotazy - ve školní síti musí být nastaven školní DNS\) a DHCP zónu, nakonec restartujeme server `service isc-dhcp-server restart`:
 
 ```
 option domain-name "vsb.cz";
@@ -85,7 +85,7 @@ Na VM2 nainstalujeme `nfs-common` a otestujeme připojení adresáře home z VM1
 
 #### TFTP
 
-TFTP se používá pro zavedení kernelu na druhém VM při startu. Na VM1 nainstalujeme `tftpd-hpad`v **/etc/default/tftpd-hpa **je config, ale není jej nutné nijak upravovat. 
+TFTP se používá pro zavedení kernelu na druhém VM při startu. Na VM1 nainstalujeme `tftpd-hpad`v **/etc/default/tftpd-hpa **je config, ale není jej nutné nijak upravovat.
 
 Do **/srv/tftp** jsou mapovány soubory dostupné skrze TFTP. Pro testovací účely tam vložíme nějaký soubor.
 
@@ -96,7 +96,7 @@ root@sus:~$ tftp
 (to) 172.16.0.2
 tftp> binary
 tftp> get testfile.txt
-tftp> q 
+tftp> q
 ```
 
 Do složky **/srv/tftp** na VM1 rozbalíme soubory potřebné pro [netboot \[link\]](http://ftp.cz.debian.org/debian/dists/Debian9.4/main/installer-amd64/current/images/netboot/netboot.tar.gz).
@@ -107,7 +107,62 @@ tar -xf netboot.tar.gz
 rm netboot.tar.gz
 ```
 
+Z archivu se vybalí soubory/odkazy/složky: _debina-installer, ldlinux.c32, pxelinux.0, pxelinux.cfg, version.info _k těmto souborům musíme vytvořit ještě složku **Debian** a překopírovat několik souborů ze složky **debian-installer/amd64/boot-screens/ **do složky **/srv/tftp**:
 
+```
+root@sus:/srv/tftp$ cp debian-installer/amd64/boot-screens/libcom32.c32 .
+root@sus:/srv/tftp$ cp debian-installer/amd64/boot-screens/libutil.c32 .
+root@sus:/srv/tftp$ cp debian-installer/amd64/boot-screens/vesamenu.c32 .
+```
+
+Do složky **Debian** nakopírujeme aktuální kernel ze složky **/boot** z VM1:
+
+```
+cp /boot/vmlinuz-4.9.0-4-amd64 /srv/tftp/Debian/
+cp /boot/initrd.img-4.9.0-4-amd64 /srv/tftp/Debian/
+```
+
+Uvnitř složky **Debian** vytvoříme další složku **Debian/root** a do ní nakopírujeme, nebo pouze vytvoříme složky z file systému VM1:
+
+```
+cp -r /bin .
+cp -r /boot .
+mkdir dev
+cp -r /etc .
+mkdir home
+cp -r /lib .
+cp -r /lib64 .
+mkdir media
+mkdir mnt
+cp -r /opt .
+mkdir proc
+cp -r /root .
+mkdir run
+cp -r /sbin .
+mkdir srv 
+mkdir sys
+mkdir tmp
+cp -r /usr .
+cp -r /var .
+```
+
+U **Debian/root/tmp** se musí ještě změnit oprávnění `chmod 777 tmp/ `a `chmod o+t tmp/`
+
+
+
+Do konfigurace DHCP **/etc/dhcp/dhcp.conf** serveru ještě přidáme další 2 řádky, které definují jak se bude bootovat, výsledný konfig bude:
+
+```
+subnet 172.16.0.0 netmask 255.255.255.0 {
+  range 172.16.0.10 172.16.0.20;
+  option broadcast-address 172.16.0.255;
+  option routers 172.16.0.2;
+  next-server 172.16.0.2;
+  filename "pxelinux.0";
+}
+```
+
+Restartujeme `isc-dhcp-server`.
 
 
 
