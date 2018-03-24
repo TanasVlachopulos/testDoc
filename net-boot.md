@@ -99,6 +99,8 @@ tftp> get testfile.txt
 tftp> q
 ```
 
+#### Netboot
+
 Do složky **/srv/tftp** na VM1 rozbalíme soubory potřebné pro [netboot \[link\]](http://ftp.cz.debian.org/debian/dists/Debian9.4/main/installer-amd64/current/images/netboot/netboot.tar.gz).
 
 ```
@@ -107,7 +109,7 @@ tar -xf netboot.tar.gz
 rm netboot.tar.gz
 ```
 
-Z archivu se vybalí soubory/odkazy/složky: _debina-installer, ldlinux.c32, pxelinux.0, pxelinux.cfg, version.info _k těmto souborům musíme vytvořit ještě složku **Debian** a překopírovat několik souborů ze složky **debian-installer/amd64/boot-screens/ **do složky **/srv/tftp**:
+Z archivu se vybalí soubory/odkazy/složky: \_debina-installer, ldlinux.c32, pxelinux.0, pxelinux.cfg, version.info \_k těmto souborům musíme vytvořit ještě složku **Debian** a překopírovat několik souborů ze složky **debian-installer/amd64/boot-screens/ **do složky **/srv/tftp**:
 
 ```
 root@sus:/srv/tftp$ cp debian-installer/amd64/boot-screens/libcom32.c32 .
@@ -146,11 +148,78 @@ cp -r /usr .
 cp -r /var .
 ```
 
-U **Debian/root/tmp** se musí ještě změnit oprávnění `chmod 777 tmp/ `a `chmod o+t tmp/`
+U **Debian/root/tmp** se musí ještě změnit oprávnění `chmod 777 tmp/`a `chmod o+t tmp/`
 
+Výsledná struktura vypadá cca takto:
 
+```
+.
+├── Debian
+│   ├── initrd.img-4.9.0-4-amd64
+│   ├── root
+│   │   ├── bin
+│   │   ├── boot
+│   │   ├── dev
+│   │   ├── etc
+│   │   ├── home
+│   │   ├── lib
+│   │   ├── media
+│   │   ├── mnt
+│   │   ├── opt
+│   │   ├── root
+│   │   ├── run
+│   │   ├── sbin
+│   │   ├── srv
+│   │   ├── sys
+│   │   ├── tmp
+│   │   └── usr
+│   └── vmlinuz-4.9.0-4-amd64
+├── debian-installer
+│   └── amd64
+│       ├── bootnetx64.efi
+│       ├── boot-screens
+│       ├── grub
+│       ├── initrd.gz
+│       ├── linux
+│       ├── pxelinux.0
+│       └── pxelinux.cfg
+├── ldlinux.c32 -> debian-installer/amd64/boot-screens/ldlinux.c32
+├── libcom32.c32
+├── libutil.c32
+├── pxelinux.0 -> debian-installer/amd64/pxelinux.0
+├── pxelinux.cfg -> debian-installer/amd64/pxelinux.cfg
+├── version.info
+└── vesamenu.c32
+```
 
-Do konfigurace DHCP **/etc/dhcp/dhcp.conf** serveru ještě přidáme další 2 řádky, které definují jak se bude bootovat, výsledný konfig bude:
+Ve zkopírovaném FS musíme ještě provést pár změn v **Debian/root/etc/fstab** zrušíme mount disků, v **Debian/root/etc/network/interfaces **zrušíme nastavení nepřítomné síťovky a přítomnou nastavíme na DHCP, v **Debian/root/etc/dhcp/dhcpd.conf **zrušíme DHCP nastavení.
+
+V **pxelinux.cfg/default** je nutné zmodifikovat config \(stávající obsah je vhodné zakomentovat\):
+
+```
+DEFAULT vesamenu.c32
+PROMPT 0
+
+MENU TITLE  Boot Menu
+
+# name of option in boot menu
+LABEL Debian - Custom SUS NetBoot
+
+KERNEL /Debian/vmlinuz-4.9.0-4-amd64
+APPEND initrd=/Debian/initrd.img-4.9.0-4-amd64 root=/dev/nfs nfsroot=172.16.0.2:/srv/tftp/Debian/root,udp ip=dhcp rw
+```
+
+Důležité je aby seděli cesty a bootovacím obrazům vmlinuz a initrd.img a taky musí být správně vyplnéná položka nfsroot, která musí obsahovat celou cestu k NTP úložišti \(172.16.0.2:/srv/tftp/Debian/root\). Důležité je taky aby se použil protokol **udp** místo defaultního tcp, jinak obraz nenabootoval, protože při bootvání dojde několikrát ke změně adresy a ztrátě spojení, TCP spojení pak vytimeoutuje, proto se musí použít UDP, který není vázán na session.
+
+Upravit musíme ještě exporty disků v NTP, do konfigu **/etc/exports** přibude ještě jeden řádek:
+
+```
+/srv/tftp/Debian/root   172.16.0.*(rw,async,no_root_squash)
+```
+
+Option _no\_root\_squash_ je důležitá, kdyby tady nebyla nemohl by root do připojeného FS zapisovat.
+
+Do konfigurace DHCP **/etc/dhcp/dhcp.conf** serveru ještě přidáme další 2 řádky, které řeknou VM2 že má bootovat ze sítě a kde najde boot menu.
 
 ```
 subnet 172.16.0.0 netmask 255.255.255.0 {
@@ -162,7 +231,7 @@ subnet 172.16.0.0 netmask 255.255.255.0 {
 }
 ```
 
-Restartujeme `isc-dhcp-server`.
+Restartujeme `isc-dhcp-server`restartujeme `nfs-kernel-server`
 
-
+Ve VirtualBoxu u VM2 nastavíme jako primární a jedinou bootovací možnost síť. Restartujeme VM2.
 
