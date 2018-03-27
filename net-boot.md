@@ -59,7 +59,7 @@ Aby VM2 mohlo do internetu je nutné na VM1 nastavit NAT mezi síťovkami. Nejd�
 ```
  echo 1 > /proc/sys/net/ipv4/ip_forward
  iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
- iptables -t NAT -L  # list all nat IP rules
+ iptables -t nat -L  # list all nat IP rules
 ```
 
 NAT není perzistentní, aby se zachoval i po restartu můžeme udělat následující:
@@ -155,34 +155,34 @@ Výsledná struktura vypadá cca takto:
 ```
 .
 ├── Debian
-│   ├── initrd.img-4.9.0-4-amd64
-│   ├── root
-│   │   ├── bin
-│   │   ├── boot
-│   │   ├── dev
-│   │   ├── etc
-│   │   ├── home
-│   │   ├── lib
-│   │   ├── media
-│   │   ├── mnt
-│   │   ├── opt
-│   │   ├── root
-│   │   ├── run
-│   │   ├── sbin
-│   │   ├── srv
-│   │   ├── sys
-│   │   ├── tmp
-│   │   └── usr
-│   └── vmlinuz-4.9.0-4-amd64
+│   ├── initrd.img-4.9.0-4-amd64
+│   ├── root
+│   │   ├── bin
+│   │   ├── boot
+│   │   ├── dev
+│   │   ├── etc
+│   │   ├── home
+│   │   ├── lib
+│   │   ├── media
+│   │   ├── mnt
+│   │   ├── opt
+│   │   ├── root
+│   │   ├── run
+│   │   ├── sbin
+│   │   ├── srv
+│   │   ├── sys
+│   │   ├── tmp
+│   │   └── usr
+│   └── vmlinuz-4.9.0-4-amd64
 ├── debian-installer
-│   └── amd64
-│       ├── bootnetx64.efi
-│       ├── boot-screens
-│       ├── grub
-│       ├── initrd.gz
-│       ├── linux
-│       ├── pxelinux.0
-│       └── pxelinux.cfg
+│   └── amd64
+│       ├── bootnetx64.efi
+│       ├── boot-screens
+│       ├── grub
+│       ├── initrd.gz
+│       ├── linux
+│       ├── pxelinux.0
+│       └── pxelinux.cfg
 ├── ldlinux.c32 -> debian-installer/amd64/boot-screens/ldlinux.c32
 ├── libcom32.c32
 ├── libutil.c32
