@@ -89,7 +89,7 @@ TFTP se používá pro zavedení kernelu na druhém VM při startu. Na VM1 nains
 
 Do **/srv/tftp** jsou mapovány soubory dostupné skrze TFTP. Pro testovací účely tam vložíme nějaký soubor.
 
-Na VM2 nainstalujeme TFTP klient `tftp-hpa` a zkusíme stáhnout testovací soubor pomocí následujících příkazů:
+Na VM2 nainstalujeme TFTP klient `tftp-hpa` restartujeme servisu na serveru i klientovi a zkusíme stáhnout testovací soubor pomocí následujících příkazů:
 
 ```
 root@sus:~$ tftp
@@ -219,7 +219,7 @@ Upravit musíme ještě exporty disků v NTP, do konfigu **/etc/exports** přibu
 
 Option _no\_root\_squash_ je důležitá, kdyby tady nebyla nemohl by root do připojeného FS zapisovat.
 
-Do konfigurace DHCP **/etc/dhcp/dhcp.conf** serveru ještě přidáme další 2 řádky, které řeknou VM2 že má bootovat ze sítě a kde najde boot menu.
+Do konfigurace DHCP **/etc/dhcp/dhcpd.conf** serveru ještě přidáme další 2 řádky, které řeknou VM2 že má bootovat ze sítě a kde najde boot menu.
 
 ```
 subnet 172.16.0.0 netmask 255.255.255.0 {
