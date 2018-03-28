@@ -83,6 +83,12 @@ Seznam exportů můžeme vylistovat pomocí příkazu `exportfs`.
 
 Na VM2 nainstalujeme `nfs-common` a otestujeme připojení adresáře home z VM1.
 
+Zkusíme přimountovat  na VM2 vytvořený nfs oddíl, a na VM1 do složky něco zapsat, z VM2 do něj ovšem nepůjde zapsat.
+
+```
+mount 172.16.0.2:/home /home
+```
+
 #### TFTP
 
 TFTP se používá pro zavedení kernelu na druhém VM při startu. Na VM1 nainstalujeme `tftpd-hpad`v **/etc/default/tftpd-hpa **je config, ale není jej nutné nijak upravovat.
