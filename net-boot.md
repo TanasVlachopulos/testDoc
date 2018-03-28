@@ -59,7 +59,7 @@ Aby VM2 mohlo do internetu je nutné na VM1 nastavit NAT mezi síťovkami. Nejd�
 ```
  echo 1 > /proc/sys/net/ipv4/ip_forward
  iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
- iptables -t nat -L  # list all nat IP rules
+ iptables -t NAT -L  # list all nat IP rules
 ```
 
 NAT není perzistentní, aby se zachoval i po restartu můžeme udělat následující:
@@ -89,7 +89,7 @@ TFTP se používá pro zavedení kernelu na druhém VM při startu. Na VM1 nains
 
 Do **/srv/tftp** jsou mapovány soubory dostupné skrze TFTP. Pro testovací účely tam vložíme nějaký soubor.
 
-Na VM2 nainstalujeme TFTP klient `tftp-hpa` restartujeme servisu na serveru i klientovi a zkusíme stáhnout testovací soubor pomocí následujících příkazů:
+Na VM2 nainstalujeme TFTP klient `tftp-hpa` a zkusíme stáhnout testovací soubor pomocí následujících příkazů:
 
 ```
 root@sus:~$ tftp
@@ -163,6 +163,7 @@ Výsledná struktura vypadá cca takto:
 │   │   ├── etc
 │   │   ├── home
 │   │   ├── lib
+|   |   ├── lib64
 │   │   ├── media
 │   │   ├── mnt
 │   │   ├── opt
@@ -214,12 +215,12 @@ Důležité je aby seděli cesty a bootovacím obrazům vmlinuz a initrd.img a t
 Upravit musíme ještě exporty disků v NTP, do konfigu **/etc/exports** přibude ještě jeden řádek:
 
 ```
-/srv/tftp/Debian/root   172.16.0.*(rw,async,no_root_squash)
+/srv/tftp/Debian/root   172.16.0.*(rw,sync,no_root_squash)
 ```
 
 Option _no\_root\_squash_ je důležitá, kdyby tady nebyla nemohl by root do připojeného FS zapisovat.
 
-Do konfigurace DHCP **/etc/dhcp/dhcpd.conf** serveru ještě přidáme další 2 řádky, které řeknou VM2 že má bootovat ze sítě a kde najde boot menu.
+Do konfigurace DHCP **/etc/dhcp/dhcp.conf** serveru ještě přidáme další 2 řádky, které řeknou VM2 že má bootovat ze sítě a kde najde boot menu.
 
 ```
 subnet 172.16.0.0 netmask 255.255.255.0 {
