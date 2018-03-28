@@ -155,34 +155,35 @@ Výsledná struktura vypadá cca takto:
 ```
 .
 ├── Debian
-│   ├── initrd.img-4.9.0-4-amd64
-│   ├── root
-│   │   ├── bin
-│   │   ├── boot
-│   │   ├── dev
-│   │   ├── etc
-│   │   ├── home
-│   │   ├── lib
-│   │   ├── media
-│   │   ├── mnt
-│   │   ├── opt
-│   │   ├── root
-│   │   ├── run
-│   │   ├── sbin
-│   │   ├── srv
-│   │   ├── sys
-│   │   ├── tmp
-│   │   └── usr
-│   └── vmlinuz-4.9.0-4-amd64
+│   ├── initrd.img-4.9.0-4-amd64
+│   ├── root
+│   │   ├── bin
+│   │   ├── boot
+│   │   ├── dev
+│   │   ├── etc
+│   │   ├── home
+│   │   ├── lib
+|   |   ├── lib64
+│   │   ├── media
+│   │   ├── mnt
+│   │   ├── opt
+│   │   ├── root
+│   │   ├── run
+│   │   ├── sbin
+│   │   ├── srv
+│   │   ├── sys
+│   │   ├── tmp
+│   │   └── usr
+│   └── vmlinuz-4.9.0-4-amd64
 ├── debian-installer
-│   └── amd64
-│       ├── bootnetx64.efi
-│       ├── boot-screens
-│       ├── grub
-│       ├── initrd.gz
-│       ├── linux
-│       ├── pxelinux.0
-│       └── pxelinux.cfg
+│   └── amd64
+│       ├── bootnetx64.efi
+│       ├── boot-screens
+│       ├── grub
+│       ├── initrd.gz
+│       ├── linux
+│       ├── pxelinux.0
+│       └── pxelinux.cfg
 ├── ldlinux.c32 -> debian-installer/amd64/boot-screens/ldlinux.c32
 ├── libcom32.c32
 ├── libutil.c32
@@ -214,7 +215,7 @@ Důležité je aby seděli cesty a bootovacím obrazům vmlinuz a initrd.img a t
 Upravit musíme ještě exporty disků v NTP, do konfigu **/etc/exports** přibude ještě jeden řádek:
 
 ```
-/srv/tftp/Debian/root   172.16.0.*(rw,async,no_root_squash)
+/srv/tftp/Debian/root   172.16.0.*(rw,sync,no_root_squash)
 ```
 
 Option _no\_root\_squash_ je důležitá, kdyby tady nebyla nemohl by root do připojeného FS zapisovat.
