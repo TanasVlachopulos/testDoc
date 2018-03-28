@@ -150,6 +150,8 @@ cp -r /var .
 
 U **Debian/root/tmp** se musí ještě změnit oprávnění `chmod 777 tmp/`a `chmod o+t tmp/`
 
+> Při chybě Kernel panic při bootu VM2 zkuntrolujte důkladně jestli jsou opravdu všechny složky nakopírované
+
 Výsledná struktura vypadá cca takto:
 
 ```
