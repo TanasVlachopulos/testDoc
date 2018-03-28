@@ -193,7 +193,7 @@ Výsledná struktura vypadá cca takto:
 └── vesamenu.c32
 ```
 
-Ve zkopírovaném FS musíme ještě provést pár změn v **Debian/root/etc/fstab** zrušíme mount disků, v **Debian/root/etc/network/interfaces **zrušíme nastavení nepřítomné síťovky a přítomnou nastavíme na DHCP, v **Debian/root/etc/dhcp/dhcpd.conf **zrušíme DHCP nastavení.
+Ve zkopírovaném FS musíme ještě provést pár změn v **Debian/root/etc/fstab** zrušíme mount všech disků, v **Debian/root/etc/network/interfaces **zrušíme nastavení všech síťovek kromě LO, v **Debian/root/etc/dhcp/dhcpd.conf **zrušíme DHCP nastavení.
 
 V **pxelinux.cfg/default** je nutné zmodifikovat config \(stávající obsah je vhodné zakomentovat\):
 
