@@ -38,7 +38,14 @@ wiki           IN      CNAME           tanas.lcoal.
 
 Správnost kofigurace můžeme ověřit pomocí `named-checkzone db.tanas.local /etc/bind/db.tanas.local` výstupem by mělo být OK.
 
-V souboru 
+V souboru **/etc/bind/named.conf.local** ještě musíme přidat distribuci zóny:
+
+```
+zone "tanas.local" {
+       type master;                      ; this server is master for this domain
+       file "/etc/bind/db.tanas.local";  ; path to zone configuration
+};
+```
 
 restartujeme `service bind9 restart` a zkontrolujeme stav `service bind9 status`
 
