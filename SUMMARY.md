@@ -6,4 +6,5 @@
 * [Disky a Raidy](disky-a-raidy.md)
 * [Netboot \(draft\)](netboot.md)
 * [Net-boot ](net-boot.md)
+* [DNS \(draft\)](dns-draft.md)
 
