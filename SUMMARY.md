@@ -7,4 +7,5 @@
 * [Netboot \(draft\)](netboot.md)
 * [Net-boot ](net-boot.md)
 * [DNS \(draft\)](dns-draft.md)
+* [DNS & Apache](dns-and-apache.md)
 
