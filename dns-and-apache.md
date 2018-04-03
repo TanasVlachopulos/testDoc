@@ -6,11 +6,11 @@ Připravíme si 2 servery master a slave, oba s 2 síťovkami. První síťiovka
 
 #### Postup
 
-Nainstalujeme populární DNS server `bind9` a několik utilit, které nám pomohou při konfiguraci `dnsutils` a `udns-utils`.
+Na mastru i slavu nainstalujeme populární DNS server `bind9` a několik utilit, které nám pomohou při konfiguraci `dnsutils` a `udns-utils`.
 
-V konfiguraci **/etc/bind/named.conf.options **odkomentujeme sekci **forwarders** a nastavíme nějaký vhodný DNS server na kt. se budou přeposílat DNS dotazy. Ve školní síti to musí být **158.196.0.53**, mimo školu to může být třeba 8.8.8.8, nebo 1.1.1.1.
+Na mastru v konfiguraci **/etc/bind/named.conf.options **odkomentujeme sekci **forwarders** a nastavíme nějaký vhodný DNS server na kt. se budou přeposílat DNS dotazy. Ve školní síti to musí být **158.196.0.53**, mimo školu to může být třeba 8.8.8.8, nebo 1.1.1.1.
 
-V **/etc/bind** vytvoříme nový zónový soubor začínající na db.\* \(je zvykem ho mít pojmenovaný podle domény\) například **db.tanas.local**. Šablonou pro obsah souborů může být například snippet z [webu SUS](http://seidl.cs.vsb.cz/wiki/index.php/SUS#.C5.A0est.C3.A1_p.C5.99edn.C3.A1.C5.A1ka).
+Na mastru v **/etc/bind** vytvoříme nový zónový soubor začínající na db.\* \(je zvykem ho mít pojmenovaný podle domény\) například **db.tanas.local**. Šablonou pro obsah souborů může být například snippet z [webu SUS](http://seidl.cs.vsb.cz/wiki/index.php/SUS#.C5.A0est.C3.A1_p.C5.99edn.C3.A1.C5.A1ka).
 
 ```
 $TTL 1h                    ;doba expirace všech záznamů
@@ -42,10 +42,12 @@ V souboru **/etc/bind/named.conf.local** ještě musíme přidat distribuci zón
 
 ```
 zone "tanas.local" {
-       type master;                      ; this server is master for this domain
-       file "/etc/bind/db.tanas.local";  ; path to zone configuration
+       type master;                      // this server is master for this domain
+       file "/etc/bind/db.tanas.local";  // path to zone configuration
 };
 ```
 
 restartujeme `service bind9 restart` a zkontrolujeme stav `service bind9 status`
+
+Funkčnost můžeme ověřit vyhledáním v DNS pomocí `nslookup tanas.local localhost` výsledek by měla být adresa 172.16.0.2, kterou jsme nastavili.
 
