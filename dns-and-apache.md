@@ -1,6 +1,6 @@
 # DNS
 
-#### Prerekvizity 
+#### Prerekvizity
 
 Připravíme si 2 servery master a slave, oba s 2 síťovkami. První síťiovka bude mít síť s NATem a internetem, druhá bude síť pouze s hostem. Na rozhranní pouze s hostem bude lepší nakonfigurovat statickou IP adresu, v tomto případě budou použity adresy 172.16.0.2 a 172.16.0.3.
 
@@ -38,7 +38,7 @@ wiki           IN      CNAME           tanas.lcoal.
 
 Správnost kofigurace můžeme ověřit pomocí `named-checkzone db.tanas.local /etc/bind/db.tanas.local` výstupem by mělo být OK.
 
+V souboru 
+
 restartujeme `service bind9 restart` a zkontrolujeme stav `service bind9 status`
-
-
 
