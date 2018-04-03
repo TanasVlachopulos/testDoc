@@ -91,7 +91,7 @@ Apr 04 00:27:56 sus named[1111]: zone tanas.local/IN: sending notifies (serial 2
 
 **!!!** Pokud změníme nějaká nastavené v zónových souborech na masteru, musíme inkrementovati i sekvenční číslo, jinak se změny nepropíšou na slave.
 
-
+# Apache
 
 
 
