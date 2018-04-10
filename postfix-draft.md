@@ -16,7 +16,7 @@ quit
 
 Ve /var/log/mail jde ověřit jestli byl email odeslán, je zde například i ID, kt. server vygeneroval při převzetí pošty.
 
-#### Postup
+### Postup
 
 Nainstalovat postfix. Doménové jmeno můžeme zvolit libovolné.
 
@@ -30,6 +30,8 @@ Položka **mynetworks** definuje sítě, z kterých bude možné emaily odesíla
 
 Ve výchozím stavu v systému běží poštovní klient mail box, který všechny přijaté emaily zapisuje do jednoho souboru /var/mail, což není úplně vhodné protože s narůstající velikosti souboru je velmi pomalé ho procházet.
 
+#### Aliasy
+
 Není vždy úplně vhodné aby uživatel měl jako emailovou adresu svůj login, vhodné je vytvořit alias, ty se konfigurují v /etc/aliases. V tomto souboru jsou vždy dvojice:
 
 ```
@@ -40,6 +42,47 @@ alias_adresa: originalni_adresa1,originalni_adresa2
 Soubor aliases může spoužit i pro definici emailových zkupit, pokud místo originální adresy zadáme více adres oddělených čárkou.
 
 Pro potvrzení změn je nutné zadat příkaz `newaliases`, bez něj se změnu v souboru neaplikují.
+
+Pokud vytvoříme takto alias tak maily sice chodit budou, ale  v hlavičce stále bude email s našim loginem, proto je nutné provést tzv. kanonické mapování. V souboru /etc/postfix/canonical, je nutné provést mapování a následně nad tímto souborem zavolat příkaz `postmap`
+
+Soubor /etc/postfix/canonical:
+
+```
+tanas@tanas.local vlachopulos.tanas@tanas.local
+```
+
+aktivace:
+
+```
+postmap /etc/postfix/canonical
+```
+
+Příkaz postmap vygeneruje z konfiguračního souboru databázy, postfuxu se ještě musí říct aby tuto databázi používal.
+
+```
+cat /etc/postfix/main.cf | grep canonical_maps
+sender_canonical_maps = hash:/etc/postfix/canonical
+recipient_canonical_maps = hash:/etc/postfix/canonical
+```
+
+Postfix může použít všelijaké typy databází pomocí postconf -m můžeme vypsat dostupné databáze.
+
+#### Způsob doručování
+
+Nakonfigurujeme pro doručování emalů místo defaultního mailbox nástroj maildir.
+
+V etc/postfix/main nakonfigurujeme option homedir, která říká že emaily budou doručeny do specifické složky v home adresáři uživatele, kterému email přišel.
+
+#### Vyzvedávání pošty
+
+Pošta se bude vyzvedávat pomocí protokolu IMAP, nainstalujeme dovecot-imapd.  
+V /etc/dovecot/conf.d/ se musí mailbox přepnout na maildir a občas se musí ještě přenout disable_plaintext_\_auth na no.
+
+restartujeme servisu.
+
+aby fungovalo automatické objevování poštovního serveru v klientských aplikací, musí se v DNS serveru nastavit SRV záznam, ten bude distribuovat adresu služby SMTP. Stejným způsobem můžeme definovat i SRV záznam pro IMAP.
+
+
 
 
 
