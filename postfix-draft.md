@@ -82,7 +82,15 @@ restartujeme servisu.
 
 aby fungovalo automatické objevování poštovního serveru v klientských aplikací, musí se v DNS serveru nastavit SRV záznam, ten bude distribuovat adresu služby SMTP. Stejným způsobem můžeme definovat i SRV záznam pro IMAP.
 
+#### Roundcube
 
+nainstalujeme roundcube-core. Před instalací je nutné vyvořid DB a usera stejně jako v případě apache.
+
+Roundcube se nainstaluje do /var/lib/roundcube, my musíme udělat symbolický link z složky /var/www do této složky roundubu.
+
+V nastavení apache pak ještě vytvoříme záznam pro tuto doménu, tak aby nám adresa roundcube.tanas.local.
+
+Rouncube funguje obecně pro jakýkoliv server SMTP, ale v nastavení rouncdube můžeme nastavit default hosta.
 
 
 
