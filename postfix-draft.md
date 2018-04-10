@@ -30,7 +30,16 @@ Položka **mynetworks** definuje sítě, z kterých bude možné emaily odesíla
 
 Ve výchozím stavu v systému běží poštovní klient mail box, který všechny přijaté emaily zapisuje do jednoho souboru /var/mail, což není úplně vhodné protože s narůstající velikosti souboru je velmi pomalé ho procházet.
 
+Není vždy úplně vhodné aby uživatel měl jako emailovou adresu svůj login, vhodné je vytvořit alias, ty se konfigurují v /etc/aliases. V tomto souboru jsou vždy dvojice:
 
+```
+alias_adresa: originalni_adresa
+alias_adresa: originalni_adresa1,originalni_adresa2
+```
+
+Soubor aliases může spoužit i pro definici emailových zkupit, pokud místo originální adresy zadáme více adres oddělených čárkou.
+
+Pro potvrzení změn je nutné zadat příkaz `newaliases`, bez něj se změnu v souboru neaplikují.
 
 
 
