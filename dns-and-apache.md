@@ -1,10 +1,12 @@
-# DNS
+# DNS & Apache
 
-#### Prerekvizity
+## DNS
+
+### Prerekvizity
 
 Připravíme si 2 servery master a slave, oba s 2 síťovkami. První síťiovka bude mít síť s NATem a internetem, druhá bude síť pouze s hostem. Na rozhranní pouze s hostem bude lepší nakonfigurovat statickou IP adresu, v tomto případě budou použity adresy 172.16.0.2 a 172.16.0.3.
 
-```
+```text
 allow-hotplug enp0s8
 auto enp0s8
 iface enp0s8 inet static
@@ -13,7 +15,7 @@ iface enp0s8 inet static
    broadcast 172.16.0.255
 ```
 
-#### Postup
+### Postup
 
 Na mastru i slavu nainstalujeme populární DNS server `bind9` a několik utilit, které nám pomohou při konfiguraci `dnsutils` a `udns-utils`.
 
@@ -21,7 +23,7 @@ Na mastru v konfiguraci **/etc/bind/named.conf.options **odkomentujeme sekci **f
 
 Na mastru v **/etc/bind** vytvoříme nový zónový soubor začínající na db.\* \(je zvykem ho mít pojmenovaný podle domény\) například **db.tanas.local**. Šablonou pro obsah souborů může být například snippet z [webu SUS](http://seidl.cs.vsb.cz/wiki/index.php/SUS#.C5.A0est.C3.A1_p.C5.99edn.C3.A1.C5.A1ka).
 
-```
+```text
 $TTL 1h                    ;doba expirace všech záznamů
 @       IN      SOA     ns1.tanas.local. abuse.tanas.local. (  ; autoritativní DNS server + email správce bez @
                          2018040301 ; seriové číslo, často ve formě data
@@ -49,7 +51,7 @@ Správnost kofigurace můžeme ověřit pomocí `named-checkzone db.tanas.local 
 
 V souboru **/etc/bind/named.conf.local** ještě musíme přidat distribuci zóny a nastavit master server jako mastra:
 
-```
+```text
 acl "tanas.local" {
        172.16.0.3;                        // allow acces for secondary slave server
 };
@@ -67,7 +69,7 @@ Funkčnost můžeme ověřit vyhledáním v DNS pomocí `nslookup tanas.local lo
 
 Na slave serveru pouze upravíme **/etc/bind/named.conf.local** přidáme do něj záznam o tom že aktuální server je slave a kdo mu dělá mastera:
 
-```
+```text
 masters tanas.local-master { 172.16.0.2; };
 
 zone tanas.local {
@@ -79,7 +81,7 @@ zone tanas.local {
 
 Restartujeme server a zkontrolujeme pomocí status, jestli se provedla replikace, ověříme funknost pomocí nslookup. Výstup `service bind9 status`:
 
-```
+```text
 Apr 04 00:27:56 sus named[1111]: zone tanas.local/IN: Transfer started.
 Apr 04 00:27:56 sus named[1111]: transfer of 'tanas.local/IN' from 172.16.0.2#53: connected using 172.16.0.3#52367
 Apr 04 00:27:56 sus named[1111]: zone tanas.local/IN: transferred serial 2018040304
@@ -91,7 +93,5 @@ Apr 04 00:27:56 sus named[1111]: zone tanas.local/IN: sending notifies (serial 2
 
 **!!!** Pokud změníme nějaká nastavené v zónových souborech na masteru, musíme inkrementovati i sekvenční číslo, jinak se změny nepropíšou na slave.
 
-# Apache
-
-
+## Apache
 

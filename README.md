@@ -1,40 +1,36 @@
-# Linux CheatSheet
+# General CheatSheet
 
-### Spustitelný příkaz
+## Spustitelný příkaz
 
 1. Vytvořit v adresáři /usr/bin/
-
 2. Na začátek vložit interpreta skriptu \#!/bin/bash
-
 3. Nastavit soubor jako spustitelný chmod a+x
 
----
+## Nahrávání souborů pomocí SCP a RSYNC
 
-### Nahrávání souborů pomocí SCP a RSYNC
-
-```
+```text
 scp foobar.txt your_username@remotehost.edu:/some/remote/directory
 ```
 
 Kopírování více souborů najednou
 
-```
+```text
 scp {foobar.txt,foobar2.txt} your_username@remotehost.edu:/some/remote/directory
 ```
 
 Kopírování složky na vzdálený server
 
-```
+```text
 scp -r mdhash_cuda2 vla0054@merlin1.cs.vsb.cz:/home/fei/vla0054/mdhash_cuda2
 ```
 
 Rekurzivní kopírování složky pomocí RSYNC:
 
-```
+```text
 rsync --rsh="ssh -l vla0054" --verbose -r soj-cv02/ linedu.vsb.cz:/home/fei/vla0054/soj-cv02
 ```
 
-### Nastavení SSH
+## Nastavení SSH
 
 Nastavení bezheslového přihlašování
 
@@ -43,11 +39,8 @@ Nastavení bezheslového přihlašování
 `ssh-keygen -t rsa -f ~/.ssh/id_rsa.vsb`
 
 1. heslo necháme prázdné \(odklepneme enterem\)
-
 2. vytvoříme soubor \`~/.ssh/config\` \(viz obsah souboru config\)
-
 3. změníme práva souboru config \`chmod 600 ~/.ssh/config\`
-
 4. pomocí nástroje copy-id nahrajeme na vzdálený server náš klíč
 
 `ssh-copy-id -i ~/.ssh/id_rsa.vsb.pub vla0054@linedu.vsb.cz`
@@ -62,29 +55,28 @@ Nastavení bezheslového přihlašování
 
 Obsah souboru config:
 
-```
+```text
 Host vsb
     Hostname linedu.vsb.cz  \# adresa vzdáleného serveru
     IdentityFile ~/.ssh/id\_rsa.vsb  \# coubor s klíčem
     User vla0054  \# uživatel
 ```
 
-#### Odkazy:
+### Odkazy:
 
 [http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/](http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/)
 
 [http://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/](http://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/)
 
-### Email
+## Email
 
-```
+```text
 apt-get install heirloom-mailx
 ```
 
 **Putty**
 
 * zapnutí numerického bloku v textových editorech - Terminal -&gt; features -&gt; Disable application keypad mode
-
 * vypnuti potvrzeni zavreni - Window -&gt; behaviour -&gt; warn before closing window
 
 **Příkazy **
@@ -95,7 +87,7 @@ Cmd \| Desc
 
 nl \| Čísla řádků
 
-\`for i in $\(seq 1 $END\); do echo $i; done\` \|    For cyklus v určitém rozsahu \(včetně počátečního a konečného čísla\)
+\`for i in $\(seq 1 $END\); do echo $i; done\` \| For cyklus v určitém rozsahu \(včetně počátečního a konečného čísla\)
 
 \`for i in {a..z}; do echo &i; done\` \| iterace skrze abecedu
 
@@ -127,21 +119,15 @@ df \| zobrazi vyuziti disku
 
 \`du -hsx \* \| sort -rh \| head -n 10\` \| vylistování složky s velikostí složek v čitelné podobě
 
----
-
 **čas**
 
 [http://www.cyberciti.biz/faq/linux-unix-formatting-dates-for-display/](http://www.cyberciti.biz/faq/linux-unix-formatting-dates-for-display/)
 
----
-
 **Zajímavé lokality**
 
-/etc/debian\_version    Verze debianu
+/etc/debian\_version Verze debianu
 
-/etc/motd    uvítací zpráva při spuštění systému
-
----
+/etc/motd uvítací zpráva při spuštění systému
 
 **Síť**
 
@@ -149,7 +135,7 @@ Cmd \| Desc
 
 ----\|------
 
-\`ip link set eth0 up/down\` \|    vypnuti a zapnuti interfacu
+\`ip link set eth0 up/down\` \| vypnuti a zapnuti interfacu
 
 \`ip addr add 192.138.1.0/24 dev eth0\` \|pridat na rozhranni adresu
 
@@ -167,9 +153,7 @@ Zrušení přesměrování
 
 \`iptables -t nat -D PREROUTING -p tcp --dport 10010 -j DNAT --to 172.16.0.10:80\`
 
----
-
-### Nastavení prostředí
+## Nastavení prostředí
 
 **Nastavení APT**
 
@@ -202,7 +186,6 @@ deb-src [http://security.debian.org/](http://security.debian.org/) jessie/update
 \*\*autodopňování parametrů příkazů:\*\*
 
 1. nainstalovat balík apt-get install bash-completion
-
 2. do souboru ~/.bashrc přidat:
 
 \`\`\`
@@ -213,13 +196,13 @@ if ! shopt -oq posix; then
 
 if \[ -f /usr/share/bash-completion/bash\_completion \]; then
 
-```
+```text
 . /usr/share/bash-completion/bash\_completion
 ```
 
 elif \[ -f /etc/bash\_completion \]; then
 
-```
+```text
 . /etc/bash\_completion
 ```
 
@@ -241,7 +224,7 @@ PS1='${debian\_chroot:+\($debian\_chroot\)}\\[\033\[01;31m\\]\u@\h\\[\033\[00m\\
 
 \`\`\`
 
-do souboru  ~/.bashrc pro uživatele přidat:
+do souboru ~/.bashrc pro uživatele přidat:
 
 \`\`\`
 
@@ -251,8 +234,6 @@ force\_color\_prompt=yes
 
 Barvy: [http://misc.flogisoft.com/bash/tip\_colors\_and\_formatting](http://misc.flogisoft.com/bash/tip_colors_and_formatting)
 
----
-
 \#\#\#VirtualBox
 
 Instalace dodatečných funkcí v grafickém prostředí
@@ -260,20 +241,12 @@ Instalace dodatečných funkcí v grafickém prostředí
 Umožňuje plynulé přecházení myši, sdílení schránky a přirozené rozlišení monitoru
 
 1. Spustíme grafické prostředí
-
 2. V liště VB &gt; zařízení &gt; Vložit obraz z CD disku s přídavky pro hosta
-
 3. Potvrdit vyskakovací okno
-
 4. Z CD ROM zkopírovat soubor VBoxLinuxAdditions.run někam do PC
-
 5. Učinit soubor spustitelným chmod +x VBoxLinuxAdditions.rum
-
 6. Spustit script ./VBoxLinuxAdditions.run
-
 7. Počkat a restartovat
-
----
 
 \#\#\#Funny utility
 
@@ -286,8 +259,6 @@ figlet \| asci art text
 \`vlc -V aa film.\*\` \| zobrazí pixel art
 
 GIT
-
----
 
 \`\`\`
 
@@ -310,6 +281,4 @@ git config --global alias.br branche
 git config --global alias.ll 'log --oneline --graph --all --decorate'
 
 \`\`\`
-
-
 

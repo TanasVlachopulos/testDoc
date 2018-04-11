@@ -14,7 +14,7 @@ v /etc/dhcp/dhcpd.conf je konfigurace dhcp, je nutné nastavit option domain nam
 
 můžeme zapnout i autorizovaný režim
 
-v souboru nastavíme jeden subnet, ze kterého se pro druhé VM budou přiřazovat adresy, default GW \(option routers\) necháme na dresu  VM 1
+v souboru nastavíme jeden subnet, ze kterého se pro druhé VM budou přiřazovat adresy, default GW \(option routers\) necháme na dresu VM 1
 
 restartujeme `service isc-dhcp-server restart`
 
@@ -24,11 +24,11 @@ restartujeme `service isc-dhcp-server restart`
 
 Na VM 1 nainstalujeme `nfs-kernel-server`
 
-NFS distribuuje soubory tak jak je na síťovém disku disku najde, tedy včetně user ID a group ID, což namená, že na serveru, který síťový disk namountuje musí mít uživatele se stejným ID a group ID, pokud se používí LDAP není to třeba moc řešit, ale pokud jsou uživatelé lokální je nutné ověřit  jestli tam stejný user existuje
+NFS distribuuje soubory tak jak je na síťovém disku disku najde, tedy včetně user ID a group ID, což namená, že na serveru, který síťový disk namountuje musí mít uživatele se stejným ID a group ID, pokud se používí LDAP není to třeba moc řešit, ale pokud jsou uživatelé lokální je nutné ověřit jestli tam stejný user existuje
 
 je nutné modifikovat \`/etc/exports\` kde se nastaví co se exportuje a kam se to exportuje
 
-```
+```text
 /home    192.168.20.*(rw,sync,no_subtree_check)
 ```
 
@@ -56,7 +56,7 @@ do /srv/tftp jsou mapovány soubory kt. se distribuují přes tfpt, z testovací
 
 na VM2 nainstalujeme TFTP klienta \`tftp-hpa\` abychom otestovali funkčnost TFPT serveru
 
-```
+```text
 connect IP_serveru
 binary
 get testovacisoubor.txt
@@ -66,7 +66,7 @@ Do složky distribuované tftp serverem nahrajeme sobory nutné pro netboot
 
 v konfiguraci DHCP serveru musíme ještě přidat informace o tom že má bootovat ze sítě, odkud to má stahovat, a jak\`\`
 
-```
+```text
 subnet 192.168.57.0 netmask 255.255.255.0 {
 range 192.168.57.100 192.168.57.200;
 option broadcast-address 192.168.57.255;
@@ -80,7 +80,7 @@ v nastavení virtualboxu je ještě nutné zapnout bootování ze sítě
 
 v složce sftp musíme mít tyto soubory pro boot, najdedeme je v připraveném balíku, ale jsou tam všelijak porozházené
 
-```
+```text
 Debian
 ldlinux.c32
 libcom32.c32
@@ -92,7 +92,7 @@ vesamenu.c32
 
 v /srv/tftp/pxelinux.cfg se nastaví defaultní bootovací konfig
 
-```
+```text
 DEFAULT vesamenu.c32
 PROMPT 0
 
@@ -109,7 +109,7 @@ u nfsroot je položka `,udp` toto je nesmírně důležité protože kdyby to ta
 
 Tento rootovský file system msuíme v sftp složce vytvořit, ty vytvoříme na základně aktuální struktury serveru, musíme kopírovat, nebo vytvořit následující složky, některé složky se musí překopírovat, některé není nutné protože jsou mapovány do paměti za běhu
 
-```
+```text
 bin -> cp
 boot -> cp
 dev
@@ -132,7 +132,7 @@ var -> cp
 
 u /tmp se musí ještě změnit oprávnění `chmod 777 tmp/` a `chmod o+t tmp/`
 
-v nfs configu musíme nastavit export rootovského FS, s tím že povolíme no root squash, díky čemuž bude moci root editovat soubory `/tftpboot/Debian/root     192.168.57.0/24(rw,async,no_root_squash)`
+v nfs configu musíme nastavit export rootovského FS, s tím že povolíme no root squash, díky čemuž bude moci root editovat soubory `/tftpboot/Debian/root 192.168.57.0/24(rw,async,no_root_squash)`
 
 v distribouvaném root FS, musíme upravit některé soubory, které nechceme disribuovat na klienty, to je napíklad nastavení fstab a taky musíme smazat nastavení obou síťových karet, kt. klient nemá
 

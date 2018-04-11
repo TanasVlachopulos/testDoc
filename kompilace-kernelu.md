@@ -15,7 +15,7 @@
 11. nainstalujeme všechny balíčky .deb `dpkg -i linux-*.de`
 12. updatujeme grub `update-grub` a výsledek by měl být přibližně následující:
 
-```
+```text
 Generating grub configuration file ...
 Found linux image: /boot/vmlinuz-4.15.7vla0054
 Found initrd image: /boot/initrd.img-4.15.7vla0054
@@ -24,7 +24,7 @@ Found initrd image: /boot/initrd.img-4.9.0-4-amd64
 done
 ```
 
-#### Další poznatky
+## Další poznatky
 
 Pomocí `make mrproper` jde udělat clean složky s kernelem \(smažou se všechny konfigurace a předkompilované moduly\).
 
@@ -44,11 +44,11 @@ insmod modul.ko - instalace modulu
 
 Jádro a moduly nemohou zapisovat do SDOUT, proto zapisují informace o sobě do složky /proc kde jsou informace z modulů jádra a také výstupy s některých spuštěných procesů, které jsou zde reprezentovány svým PID.
 
-#### Ověření
+## Ověření
 
 Při startu by měl být vidět custom název kernelu z pole **local version **v configu kernelu:
 
-```
+```text
 tanas@TanasPC:~$ ssh 192.168.1.128
 tanas@192.168.1.128's password:
 Linux sus 4.15.7vla0054 #2 Fri Mar 2 17:58:19 CET 2018 x86_64
@@ -56,7 +56,7 @@ Linux sus 4.15.7vla0054 #2 Fri Mar 2 17:58:19 CET 2018 x86_64
 
 Ověřit pomocí **uname**:
 
-```
+```text
 root@sus:~$ uname -a
 Linux sus 4.15.7vla0054 #2 Fri Mar 2 17:58:19 CET 2018 x86_64 GNU/Linux
 root@sus:~$ uname -r
@@ -65,7 +65,7 @@ root@sus:~$ uname -mrs
 Linux 4.15.7vla0054 x86_64
 ```
 
-#### Zdroje
+## Zdroje
 
 [http://www.abclinuxu.cz/clanky/navody/cesta-do-hlubin-kompilace-jadra-1](http://www.abclinuxu.cz/clanky/navody/cesta-do-hlubin-kompilace-jadra-1)
 

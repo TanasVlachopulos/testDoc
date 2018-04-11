@@ -1,5 +1,7 @@
 # DNS \(draft\)
 
+## DNS \(draft\)
+
 nainstalovat bind9
 
 nainstalovat dnsutils a udns-utils
@@ -22,7 +24,7 @@ DNS musí mít vždy i sekundární DNS server, pro povolení sekundární DNS s
 
 na sekundárním serveru se nastaví v konfiguraci server master server a vytvoří se nová zona typu slave a řekne se kt. server je pro tuto zonu mastrem
 
-# Apache
+## Apache
 
 Stránky v apache se vytvářejí v sites-avaliable a zapnuté jsou pak v sites-enabled, stránky se vytvoří v avaliable a apache je pak prolinkuje symbolickými odkazy do enabled v případě že je zapneme
 
@@ -30,7 +32,7 @@ v /etc/resolv.conf je nutné nastavit aby nameserver byl náš DNS server, kdyby
 
 poté se pomocí a2ensite zapne stránka kt. jsme vytvořili
 
-#### Ukol: vytvořit wiki
+### Ukol: vytvořit wiki
 
 stahnout z mediawiki projekty balik media wiki
 
@@ -41,6 +43,4 @@ nainstaluje se php apt install lib apache php ???
 nainstalujeme mysql/mariadb
 
 vytvořit novou sites pro media wiki
-
-
 
