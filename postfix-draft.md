@@ -9,6 +9,7 @@ telnet smtp.tanas.local 25
 helo tanas
 mail from: tanas@tanas.local
 rcpt to: tanas@tanas.eu
+data
 msg body
 .
 quit
