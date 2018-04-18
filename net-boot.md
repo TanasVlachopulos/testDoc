@@ -81,6 +81,8 @@ na VM1 nainstalujeme `nfs-kernel-server` a do **/etc/exports** vložíme nastave
 /home   172.16.0.*(rw,sync,no_subtree_check)
 ```
 
+Restartujeme `service nfs-kernel-server restart`
+
 Seznam exportů můžeme vylistovat pomocí příkazu `exportfs`.
 
 Na VM2 nainstalujeme `nfs-common` a otestujeme připojení adresáře home z VM1.
