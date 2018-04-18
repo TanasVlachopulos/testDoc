@@ -63,7 +63,7 @@ zone "tanas.local" {
 };
 ```
 
-!!! Pozor na středníky v konfiguraci.
+ ❗ Pozor na středníky v konfiguraci.
 
 Restartujeme `service bind9 restart` a zkontrolujeme stav `service bind9 status`
 
@@ -93,7 +93,7 @@ records, 314 bytes, 0.001 secs (314000 bytes/sec)
 Apr 04 00:27:56 sus named[1111]: zone tanas.local/IN: sending notifies (serial 2018040304)
 ```
 
-**!!!** Pokud změníme nějaká nastavené v zónových souborech na masteru, musíme inkrementovati i sekvenční číslo, jinak se změny nepropíšou na slave.
+ ❗ Pokud změníme nějaká nastavené v zónových souborech na masteru, musíme inkrementovati i sekvenční číslo, jinak se změny nepropíšou na slave.
 
 ## Apache
 
@@ -114,7 +114,7 @@ Pro vytvoření nové stránky musíme do `/var/www/html`, nebo nějaké z podsl
 </VirtualHost>
 ```
 
-**!!!** Nově vytvořený soubor musí končit na **.conf**
+ ❗ Nově vytvořený soubor musí končit na **.conf**
 
 Povolíme danou stránku pomocí `a2ensite wiki.tanas.local`, tento příkaz vytvoří symbolický link do složky **/etc/sites-enabled** a povolí tím stránku. Restartujeme apache `service apache2 reload`.
 
