@@ -130,6 +130,7 @@ root@sus:/srv/tftp$ cp debian-installer/amd64/boot-screens/vesamenu.c32 .
 Do složky **Debian** nakopírujeme aktuální kernel ze složky **/boot** z VM1:
 
 ```text
+mkdir /srv/tftp/Debian
 cp /boot/vmlinuz-4.9.0-4-amd64 /srv/tftp/Debian/
 cp /boot/initrd.img-4.9.0-4-amd64 /srv/tftp/Debian/
 ```
