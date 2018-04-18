@@ -9,5 +9,4 @@
 * [DNS \(draft\)](dns-draft.md)
 * [DNS & Apache](dns-and-apache.md)
 * [Postfix & Dovecot & Roundcube](postfix-draft.md)
-* [Postfix & Roundcube](postfix-and-roundcube.md)
 
