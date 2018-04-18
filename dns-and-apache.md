@@ -114,7 +114,9 @@ Pro vytvoření nové stránky musíme do `/var/www/html`, nebo nějaké z podsl
 </VirtualHost>
 ```
 
-Restartujeme apache `service apache2 reload`.
+**!!!** Nově vytvořený soubor musí končit na **.conf**
+
+Povolíme danou stránku pomocí `a2ensite wiki.tanas.local`, tento příkaz vytvoří symbolický link do složky **/etc/sites-enabled** a povolí tím stránku. Restartujeme apache `service apache2 reload`.
 
 Přesvědčíme se, že v nastavení DNS propagujeme webovou stránku **wiki.tanas.local** a že tuto stránku dokážeme resolvnout, na stroji z kterého se pokoušíme o přístup musíme mít nastavený výchozí DNS server vlastní DNS server.
 
