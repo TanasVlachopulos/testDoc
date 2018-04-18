@@ -44,6 +44,8 @@ subnet 172.16.0.0 netmask 255.255.255.0 {
 }
 ```
 
+Nakonec ještě ověříme pomocí `service isc-dhcp-server status`
+
 Na VM2 nastavíme na enp0s8 \(nebo enp0s3, podle toho kt. karta je zapojená\) získávání adresu z DHCP:
 
 ```text
