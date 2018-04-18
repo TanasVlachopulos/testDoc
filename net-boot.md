@@ -61,7 +61,7 @@ Aby VM2 mohlo do internetu je nutné na VM1 nastavit NAT mezi síťovkami. Nejd�
 ```text
  echo 1 > /proc/sys/net/ipv4/ip_forward
  iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
- iptables -t NAT -L  # list all nat IP rules
+ iptables -t nat -L  # list all nat IP rules
 ```
 
 NAT není perzistentní, aby se zachoval i po restartu můžeme udělat následující:
