@@ -31,7 +31,7 @@ Na VM1 nainstalujeme a nastavíme DHCP server, ten bude přidělovat adresu a da
 
 DHCP server je defaultně vypnutý a musí se tedy zapnout v **/etc/defaul/isc-dhcp-server**, upraví se pouze řádek s konfigurací pro IPv4, tak aby distribuoval DHCP do sítě s VM2 `INTERFACESv4="enp0s8"`
 
-V **/etc/dhcp/dhcpd.conf** nastavíme **domain-name**, **domain-name-servers **\(adresa DNS serveru na kt. se budou forwardovat dotazy - ve školní síti musí být nastaven školní DNS\) a DHCP zónu, nakonec restartujeme server `service isc-dhcp-server restart`:
+V **/etc/dhcp/dhcpd.conf** nastavíme **domain-name**, **domain-name-servers **\(adresa DNS serveru na kt. se budou forwardovat dotazy - ve školní síti musí být nastaven školní DNS  158.196.0.53\) a DHCP zónu, nakonec restartujeme server `service isc-dhcp-server restart`:
 
 ```text
 option domain-name "vsb.cz";
