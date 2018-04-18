@@ -63,7 +63,7 @@ zone "tanas.local" {
 };
 ```
 
- :exclamation: Pozor na středníky v konfiguraci.
+!!! Pozor na středníky v konfiguraci.
 
 Restartujeme `service bind9 restart` a zkontrolujeme stav `service bind9 status`
 
