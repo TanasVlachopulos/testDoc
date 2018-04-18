@@ -63,7 +63,9 @@ zone "tanas.local" {
 };
 ```
 
-restartujeme `service bind9 restart` a zkontrolujeme stav `service bind9 status`
+ :exclamation: Pozor na středníky v konfiguraci.
+
+Restartujeme `service bind9 restart` a zkontrolujeme stav `service bind9 status`
 
 Funkčnost můžeme ověřit vyhledáním v DNS pomocí `nslookup tanas.local localhost` výsledek by měla být adresa 172.16.0.2, kterou jsme nastavili.
 
