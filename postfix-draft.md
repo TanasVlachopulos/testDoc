@@ -99,11 +99,24 @@ _pop3s._tcp    SRV 0 1 995 pop3.example.com.  ; pop3 sercure
 
 ### Roundcube
 
-nainstalujeme `apt install roundcube-core`. Před instalací je nutné  nainstalovat mysql-server, pokud tak nebylo učiněno dříve..
+ Před instalací je nutné ❗ nainstalovat mysql-server, pokud tak nebylo učiněno dříve. Nainstalujeme `apt install roundcube-core`.
 
-Roundcube se nainstaluje do /var/lib/roundcube, my musíme udělat symbolický link z složky /var/www do této složky roundubu.
+Roundcube se nainstaluje do **/var/lib/roundcube**, my musíme udělat symbolický link z složky **/var/www/html** tak aby zde mohl apache nalézt webové rozhraní.
 
-V nastavení apache pak ještě vytvoříme záznam pro tuto doménu, tak aby nám adresa roundcube.tanas.local.
+```text
+cd /var/www/html
+ln -s /var/lib/roundcube
+```
 
-Rouncube funguje obecně pro jakýkoliv server SMTP, ale v nastavení rouncdube můžeme nastavit default hosta.
+Ve výchozím stavu by pak měl být Roundcube dostupný na webové adrese _IP\_serveru/rouncube, _popřípadě v nastavení DNS můžeme nastavit záznam pro **roundcube.tanas.local**. V nastavení apache pak ještě vytvoříme záznam pro tuto doménu, tak aby nám adresa roundcube.tanas.local směrovala na host s roundube. 
+
+ ❗ Server musí mít v **/etc/resolve.conf **nastaven jako resolver sebe sama, po všech změnách v apachi a DNS se musí služby restartovat a v DNS se musí změnit sekvenční číslo.
+
+Rouncube funguje obecně pro jakýkoliv server SMTP, ale v nastavení rouncdube můžeme nastavit default hosta, ten se nastavuje v  **/var/www/roundcube/config/config.inc.php**, upraví se položka:
+
+```text
+$config['default_host'] = '127.0.0.1';
+```
+
+
 
