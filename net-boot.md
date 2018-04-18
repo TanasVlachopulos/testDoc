@@ -233,7 +233,7 @@ Na VM1 musíme upravit ještě exporty disků v NFS, do konfigu **/etc/exports**
 
 Option _no\_root\_squash_ je důležitá, kdyby tady nebyla nemohl by root do připojeného FS zapisovat.
 
-Do konfigurace DHCP **/etc/dhcp/dhcp.conf** serveru ještě přidáme další 2 řádky, které řeknou VM2 že má bootovat ze sítě a kde najde boot menu.
+Do konfigurace DHCP **/etc/dhcp/dhcpd.conf** serveru ještě přidáme další 2 řádky, které řeknou VM2 že má bootovat ze sítě a kde najde boot menu.
 
 ```text
 subnet 172.16.0.0 netmask 255.255.255.0 {
