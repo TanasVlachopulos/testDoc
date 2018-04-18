@@ -97,3 +97,9 @@ Apr 04 00:27:56 sus named[1111]: zone tanas.local/IN: sending notifies (serial 2
 
 ## Apache
 
+Nainstalujeme Apache2 apt install apache2. Ihned po nainstalování zpřístupní Apache uvítací stránku, což lze ověřit externím prohlížečem, nebo z příkazové řádky prohlížečem Lynx.
+
+
+
+
+
