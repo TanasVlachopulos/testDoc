@@ -95,7 +95,7 @@ mount 172.16.0.2:/home /home
 
 ### TFTP
 
-TFTP se používá pro zavedení kernelu na druhém VM při startu. Na VM1 nainstalujeme `tftpd-hpad`v **/etc/default/tftpd-hpa **je config, ale není jej nutné nijak upravovat.
+TFTP se používá pro zavedení kernelu na druhém VM při startu. Na VM1 nainstalujeme `tftpd-hpa`v **/etc/default/tftpd-hpa **je config, ale není jej nutné nijak upravovat.
 
 Do **/srv/tftp** jsou mapovány soubory dostupné skrze TFTP. Pro testovací účely tam vložíme nějaký soubor.
 
