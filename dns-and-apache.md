@@ -97,9 +97,24 @@ Apr 04 00:27:56 sus named[1111]: zone tanas.local/IN: sending notifies (serial 2
 
 ## Apache
 
-Nainstalujeme Apache2 apt install apache2. Ihned po nainstalování zpřístupní Apache uvítací stránku, což lze ověřit externím prohlížečem, nebo z příkazové řádky prohlížečem Lynx.
+Nainstalujeme Apache2 `apt install apache2`. Ihned po nainstalování zpřístupní Apache uvítací stránku, což lze ověřit externím prohlížečem, nebo z příkazové řádky prohlížečem **Lynx**.
 
+Pro vytvoření nové stránky musíme do `/var/www/html`, nebo nějaké z podsložek nakopírovat naši webovou stránku \(například wikimedia stránku\). V `/etc/apache2/sites-available` zkopírujeme výchozí webovou stránku **000-default.conf **a použijeme ji jako vzor, naše definice stránky by měla vypadat asi takto:
 
+```text
+<VirtualHost wiki.tanas.local:80>
+    ServerName wiki.tanas.local
 
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html/
 
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+```
+
+Restartujeme apache `service apache2 reload`.
+
+Přesvědčíme se, že v nastavení DNS propagujeme webovou stránku **wiki.tanas.local** a že tuto stránku dokážeme resolvnout, na stroji z kterého se pokoušíme o přístup musíme mít nastavený výchozí DNS server vlastní DNS server.
 
