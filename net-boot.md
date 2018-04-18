@@ -225,7 +225,7 @@ APPEND initrd=/Debian/initrd.img-4.9.0-4-amd64 root=/dev/nfs nfsroot=172.16.0.2:
 
 Důležité je aby seděli cesty a bootovacím obrazům vmlinuz a initrd.img a taky musí být správně vyplnéná položka nfsroot, která musí obsahovat celou cestu k NTP úložišti \(172.16.0.2:/srv/tftp/Debian/root\). Důležité je taky aby se použil protokol **udp** místo defaultního tcp, jinak obraz nenabootoval, protože při bootvání dojde několikrát ke změně adresy a ztrátě spojení, TCP spojení pak vytimeoutuje, proto se musí použít UDP, který není vázán na session.
 
-Upravit musíme ještě exporty disků v NTP, do konfigu **/etc/exports** přibude ještě jeden řádek:
+Na VM1 musíme upravit ještě exporty disků v NFS, do konfigu **/etc/exports** přibude ještě jeden řádek:
 
 ```text
 /srv/tftp/Debian/root   172.16.0.*(rw,sync,no_root_squash)
