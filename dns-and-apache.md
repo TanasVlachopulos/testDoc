@@ -24,16 +24,16 @@ Na mastru v konfiguraci **/etc/bind/named.conf.options **odkomentujeme sekci **f
 Na mastru v **/etc/bind** vytvoříme nový zónový soubor začínající na db.\* \(je zvykem ho mít pojmenovaný podle domény\) například **db.tanas.local**. Šablonou pro obsah souborů může být například snippet z [webu SUS](http://seidl.cs.vsb.cz/wiki/index.php/SUS#.C5.A0est.C3.A1_p.C5.99edn.C3.A1.C5.A1ka).
 
 ```text
-$TTL 1h                    ;doba expirace všech záznamů
-@       IN      SOA     ns1.tanas.local. abuse.tanas.local. (  ; autoritativní DNS server + email správce bez @
-                         2018040301 ; seriové číslo, často ve formě data
-                         4h         ; jak často si stahuje data sekundární server
-                         2h         ; za jak dlouho se má sek.server pokusit stáhnout data při neúspěchu
-                         2w         ; kdy platnost dat v sek.serveru vyprší
-                         1h )       ; jak dlouho si mají data pamatovat cache servery
+$TTL 1h                    ; record expiration
+@       IN      SOA     ns1.tanas.local. abuse.tanas.local. (  ; athoritative DNS server with admin email withnout  @
+                         2018040301 ; serial number
+                         4h         ; slave server refresh periode
+                         2h         ; failure refresh interval
+                         2w         ; expiration
+                         1h )       ; persistency period
 ;
-@       IN      NS      ns1.tanas.local. ; autoritativní servery pro doménu, musí mít i A záznamy
-@       IN      NS      ns2.tanas.local. ; autoritativní servery pro doménu, musí mít i A záznamy
+@       IN      NS      ns1.tanas.local. ; authoritative server for domain, aditional A record required
+@       IN      NS      ns2.tanas.local. ; authoritative server for domain, aditional A record required
 
 
 tanas.local.   IN      MX      10      smtp.tanas.local.  ; primary MX record for SMTP server on master
