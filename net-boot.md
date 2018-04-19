@@ -208,6 +208,8 @@ Výsledná struktura vypadá cca takto:
 
 Ve zkopírovaném FS musíme ještě provést pár změn v **Debian/root/etc/fstab** zrušíme mount všech disků, v **Debian/root/etc/network/interfaces **zrušíme nastavení všech síťovek kromě LO, v **Debian/root/etc/dhcp/dhcpd.conf **zrušíme DHCP nastavení.
 
+ ❗ ❗ ❗ Pozor na to které soubory se modifikují musí se modifikovat soubory v **/srv/tftp/Debian/root** ne soubory v lokální **/etc**.
+
 V **/srv/tftp/pxelinux.cfg/default** je nutné zmodifikovat config \(stávající obsah je vhodné zakomentovat\):
 
 ```text
