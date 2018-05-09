@@ -10,4 +10,5 @@
 * [DNS & Apache](dns-and-apache.md)
 * [Postfix & Dovecot & Roundcube](postfix-draft.md)
 * [BPSDC notes](bpsdc-notes.md)
+* [SZZ injection](szz-injection.md)
 
