@@ -69,7 +69,7 @@ zabývají se postupy pro vytváření objektů, řeší jaká třída se použi
 
 **Builder** \(Stavitel\) – Odděluje tvorbu komplexu objektů od jejich reprezentace tak, aby stejný proces tvorby mohl být použit i pro jiné reprezentace.
 
-**Singleton** \(Jedináček\) – Potřebujete-li, aby měla třída maximálně jednu instanci.
+**Singleton** \(Jedináček\) – Potřebujete-li, aby měla třída maximálně jednu instanci. Tento návrhový vzor je už trochu zastaralý a měl by se spíše používat návrhový vzor **Dependency injection**.
 
 **Prototype** \(Prototyp, Klon\) – Specifikuje druh objektů, které se mají vytvořit použitím prototypového objektu. Nové objekty se vytváří kopírováním tohoto prototypového objektu.
 
