@@ -33,5 +33,11 @@ Pro hodnocení firmy z hlediska schopnosti řídit se procesy je definována stu
 
 ### Počáteční fáze vývoje
 
+[http://lucie.zolta.cz/index.php/softwarove-inzenyrstvi/35-specifikace-pozadavku](http://lucie.zolta.cz/index.php/softwarove-inzenyrstvi/35-specifikace-pozadavku)
+
+První fází je **specifikace požadavků **cílem je definovat seznam požadavků na software a popsat jeho jednotlivé funkcionality. Výsledkem je dokument, který stanovuje rozsah projektu a stává se základem smlouvy se zákazníkem.
+
+V této fázi se používají **use-case** diagramy pro znázornění entit systému a činností, které vykonávají. **Sekvenční diagram**, který popisuje funkci systému z pohledu objektů a zachycuje jejich vzájemnou komunikaci a interakci v závislosti na čase. **Diagram aktivit** zachycuje rozhodovací proces pro konkrétní funkci systému.
+
 
 
