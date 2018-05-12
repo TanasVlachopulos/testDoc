@@ -130,6 +130,22 @@ Definuje jak se třídy a objekty budou chovat vůči svému okolí, jaké budou
 * struktura programu se snaží kopírovat reálné prostředí - navzájem komunikující objekty
 * snaží se krýt detaily implementace před ostatními entitami
 
+#### Rysy OOP
+
+**Abstrakce **- program se může oprostit od detailů implementace používaných komponent a přistupovat k nim jako k black boxu.
+
+**Zapouzdření **- metody a vlastnosti objektů mohou být soukromé, ostatní entity na ně nemohou sahat a narušovat konzistenci objektu
+
+**Skládání** - objekt může obsahovat jiné objekty
+
+**Delegování **- objekt může volat metody jiných objektů
+
+**Dědičnost **- třída může dědit s jiný třídy, získá tak její vlastnosti a metody, které může rozšířit
+
+**Polymorfismus **- objekty mohou vystupovat ve stejné roli i když jsou instancemi různých tříd, důležité je aby měli stejné metody, které ale může každý objekt implementovat jiným způsobem.
+
+**Genericita **- třída používá neurčité datové typu které může při používání programátor předefinovat, často používaná především s polymorfismem kdy generická třída může nést různé objekty, které ale mají společné vlastnosti
+
 #### Třída
 
 Slouží jako šablona pro vytváření objektů, nenese informace o konkrétním objektu pouze definuje strukturu a chování objektu. Může mít implementovány také vlastní třídní proměnné a metody.
@@ -145,8 +161,6 @@ Třídě, která používá interface předepisuje metody a proměnné, které m
 #### Abstraktní třída
 
 Tento typ třídy může obsahovat implementaci metod i pouze deklarované metody bez implementace. Stejně jako u rozhraní nelze vytvořit instanci abstraktní třídy. Třída může podědit pouze z jedné abstraktní třídy.
-
-
 
 
 
