@@ -123,5 +123,30 @@ Definuje jak se třídy a objekty budou chovat vůči svému okolí, jaké budou
 
 > První formální definice návrhových vzorů byla definována v knize  **Design Patterns: Elements of Reusable Object-Oriented Software**, kde kromě 23 základních návrhových vzorů byly popsány základní pilíře objektově orientovaného programování. Tyto původní návrhové vzory jsou označovány jako **GoF** podle 4 autorů knihy \(Gang of Four\).
 
+### OOP
+
+* Je vedeno snahou o znovupoužitelnost komponent
+* komplexní problém se rozloží na dílčí problémy které lze řešit samostatně
+* struktura programu se snaží kopírovat reálné prostředí - navzájem komunikující objekty
+* snaží se krýt detaily implementace před ostatními entitami
+
+#### Třída
+
+Slouží jako šablona pro vytváření objektů, nenese informace o konkrétním objektu pouze definuje strukturu a chování objektu. Může mít implementovány také vlastní třídní proměnné a metody.
+
+#### Objekt
+
+Je instancí třídy, má své vlastní vlastnosti \(proměnné\) a chování \(metody\).
+
+#### Interface
+
+Třídě, která používá interface předepisuje metody a proměnné, které musí tato třída implementovat. Samotný interface obsahuje pouze deklarace metod a proměnných, neobsahuje žádné definice. Třída může implementovat více různých rozhraní.
+
+#### Abstraktní třída
+
+Tento typ třídy může obsahovat implementaci metod i pouze deklarované metody bez implementace. Stejně jako u rozhraní nelze vytvořit instanci abstraktní třídy. Třída může podědit pouze z jedné abstraktní třídy.
+
+
+
 
 
