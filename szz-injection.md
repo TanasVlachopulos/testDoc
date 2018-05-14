@@ -162,5 +162,21 @@ Třídě, která používá interface předepisuje metody a proměnné, které m
 
 Tento typ třídy může obsahovat implementaci metod i pouze deklarované metody bez implementace. Stejně jako u rozhraní nelze vytvořit instanci abstraktní třídy. Třída může podědit pouze z jedné abstraktní třídy.
 
+### Správa paměti
 
+{% embed data="{\"url\":\"http://www.cs.vsb.cz/benes/vyuka/pte/texty/pamet/index.html\",\"type\":\"link\",\"title\":\"Správa paměti\"}" %}
+
+Problémy:
+
+* Předčasné uvolnění paměti - program se pokusí na alokovaný blok sáhnout i po uvolnění
+* Únik paměti - paměť se nestačí uvolňovat a nakonec je vyčerpána
+* Externí fragmentace - vzniká při špatné správě paměti, v paměti je dostatek volného místa ale požadovaný velký blok nelze přidělit, protože je paměť poseta malými fragmenty 
+* Špatná lokalita odkazů - přístup je pomalejší pokud jsou dva bloky fyzicky daleko od sebe
+* Nepřizpůsobivý návrh - metoda přidělování paměti počítá s jiným chováním programu, například jinou velikostí bloku
+
+#### Implementace v jazycích
+
+Python - GC založené na počítání referencí; problém vzniku kruhových referencí; kruhové reference odstraňuje periodicky CPython interpret; kontrola počtu referenci zpomaluje běh
+
+Java/C\# - periodicky odstraňuje objekty s null referencí; běží v separátním vlákně; trvá déle než se paměť uvolní
 
