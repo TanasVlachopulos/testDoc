@@ -59,3 +59,19 @@ apt install figlet
 figlet SUS > /etc/motd
 ```
 
+## GIT
+
+```text
+git config --global user.name "Tanas Vlachopulos"
+git config --global user.email "tanas@tanas.eu"
+git config --global color.u auto
+git config --global push.default simple
+git config --global alias.st status
+git config --global alias.ci commit
+git config --global alias.co checkout
+git config --global alias.br branche
+git config --global alias.ll 'log --oneline --graph --all --decorate'
+```
+
+
+

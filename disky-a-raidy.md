@@ -23,7 +23,7 @@
 
 4. cfdisk /dev/sdx - nástroj pro vytváření rozdělení \(optional pokud nechceme více oddílů\)
 5. mkfs.ext4 /dev/sdx - naformátujeme disk
-6. zapíšeme záznam do **fstab **s UUID a parametrem defaults, jako mount point uvedeme /home
+6. zapíšeme záznam do **fstab** s UUID a parametrem defaults, jako mount point uvedeme /home
 7. připojíme disk do nějaké dočasné složky `mount -t ext4 /dev/sdX /tmp/sdX`
 8. zkopírujeme obsah adresáře home do dočasně připojené složky `cp -r /home/* /tmp/sdX`
 9. aplikujeme záznamy z fstabu `mount -a`

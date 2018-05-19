@@ -79,7 +79,7 @@ apt-get install heirloom-mailx
 * zapnutí numerického bloku v textových editorech - Terminal -&gt; features -&gt; Disable application keypad mode
 * vypnuti potvrzeni zavreni - Window -&gt; behaviour -&gt; warn before closing window
 
-**Příkazy **
+**Příkazy** 
 
 Cmd \| Desc
 
@@ -258,27 +258,19 @@ figlet \| asci art text
 
 \`vlc -V aa film.\*\` \| zobrazí pixel art
 
-GIT
+### GIT
 
-\`\`\`
-
+```text
 git config --global user.name "Tanas Vlachopulos"
-
 git config --global user.email "tanas@tanas.eu"
-
 git config --global color.u auto
-
 git config --global push.default simple
-
 git config --global alias.st status
-
 git config --global alias.ci commit
-
 git config --global alias.co checkout
-
 git config --global alias.br branche
-
 git config --global alias.ll 'log --oneline --graph --all --decorate'
+```
 
-\`\`\`
+
 

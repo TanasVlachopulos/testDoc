@@ -2,7 +2,7 @@
 
 Pro konfiguraci postfixu použijeme DNS servery z minula. Musíme ověřit, že oba servery mají srávně nastavený NX záznam, tak aby vracel adresu master DNS serveru, taky je nutné ověřit zda oba servery mají v /etc/resolv.conf nastavený jako primární DNS sebe sama.
 
-Nainstalujeme postfix` apt install postfix`. Při instalaci na dotaz výchozí konfigurace zvolíme **internet site** a doménu můžeme ponechat libovolnout, například tanas.local. Konfig postfixu je v **/etc/postfix/main.cfg**.
+Nainstalujeme postfix `apt install postfix`. Při instalaci na dotaz výchozí konfigurace zvolíme **internet site** a doménu můžeme ponechat libovolnout, například tanas.local. Konfig postfixu je v **/etc/postfix/main.cfg**.
 
 Postfix funguje hned po instalaci funkčnost otestujeme pomocí telnetu:
 
@@ -21,11 +21,11 @@ Ve **/var/log/mail** jde ověřit jestli byl email odeslán, je zde například 
 
 Doručená pošta je k prohlédnutí ve **/var/mail** je zde soubor s poštou pro každého uživatele.
 
-V main configu je nutné nastavit **relayhost, **touto položkou lze definovat na jaký server se všechny zprávy budou přeposílat \(například smtp.vsb.cz\) a ten se o ně dále bude starat a bude řešit kam je přeposlat, kdyby tato položka nebyla nakonfigurováno můžeme rovnou do světa rozesílat emaily, ale ve školní síti je tato možnost blokována.
+V main configu je nutné nastavit **relayhost,** touto položkou lze definovat na jaký server se všechny zprávy budou přeposílat \(například smtp.vsb.cz\) a ten se o ně dále bude starat a bude řešit kam je přeposlat, kdyby tato položka nebyla nakonfigurováno můžeme rovnou do světa rozesílat emaily, ale ve školní síti je tato možnost blokována.
 
 Položka **mynetworks** definuje sítě, z kterých bude možné emaily odesílat, musíme zde přidat adresu naší sítě, takže například 172.16.0.0/24. 
 
-Položku **mydestination** je nutné nastavit, obsahuje domény o kt. se bude tento server starat, musíme zde tedy nastavit naši doménu _tanas.local, _většinou zde tato doména už je protože se nastavuje při instalaci.
+Položku **mydestination** je nutné nastavit, obsahuje domény o kt. se bude tento server starat, musíme zde tedy nastavit naši doménu _tanas.local,_ většinou zde tato doména už je protože se nastavuje při instalaci.
 
 > Každý uživatel má ve výchozím stavu svoji poštovní schránku kt. se jmenuje stejně jako uživatelské jméno. Maily lze zobrazit v souboru /var/mail.
 
@@ -44,7 +44,7 @@ Soubor aliases může spoužit i pro definici emailových zkupit, pokud místo o
 
 Pro potvrzení změn je nutné zadat příkaz `newaliases`, bez něj se změnu v souboru neaplikují.
 
-Pokud vytvoříme takto alias tak maily sice chodit budou, ale v hlavičce stále bude email s našim loginem, proto je nutné provést tzv. kanonické mapování. V souboru **/etc/postfix/canonical **\(pozor soubor ve výchozím stavu neexistuje musíme ho vytvořit\), je nutné provést mapování a následně nad tímto souborem zavolat příkaz `postmap`
+Pokud vytvoříme takto alias tak maily sice chodit budou, ale v hlavičce stále bude email s našim loginem, proto je nutné provést tzv. kanonické mapování. V souboru **/etc/postfix/canonical** \(pozor soubor ve výchozím stavu neexistuje musíme ho vytvořit\), je nutné provést mapování a následně nad tímto souborem zavolat příkaz `postmap`
 
 Soubor **/etc/postfix/canonical**:
 
@@ -72,7 +72,7 @@ Funkčnost si ověříme tím, že přes telnet pošleme e-mail ze svého orgin�
 
 ### Způsob doručování
 
-Volitelně lze pro doručování emalů místo defaultního **mailbox **použít nástroj **maildir**.
+Volitelně lze pro doručování emalů místo defaultního **mailbox** použít nástroj **maildir**.
 
 V **etc/postfix/main.cfg** nakonfigurujeme option **homedir**, je defaultně zakomentovaná, stačí ji odkomentovat a zakomentovat původní mailbox. e-maily budou následně doručovány do specifické složky tu je pravděpodobně ještě nutné vytvořit a dát jí práva.
 
@@ -108,9 +108,9 @@ cd /var/www/html
 ln -s /var/lib/roundcube
 ```
 
-Ve výchozím stavu by pak měl být Roundcube dostupný na webové adrese _IP\_serveru/rouncube, _popřípadě v nastavení DNS můžeme nastavit záznam pro **roundcube.tanas.local**. V nastavení apache pak ještě vytvoříme záznam pro tuto doménu, tak aby nám adresa roundcube.tanas.local směrovala na host s roundube. 
+Ve výchozím stavu by pak měl být Roundcube dostupný na webové adrese _IP\_serveru/rouncube,_ popřípadě v nastavení DNS můžeme nastavit záznam pro **roundcube.tanas.local**. V nastavení apache pak ještě vytvoříme záznam pro tuto doménu, tak aby nám adresa roundcube.tanas.local směrovala na host s roundube. 
 
- ❗ Server musí mít v **/etc/resolve.conf **nastaven jako resolver sebe sama, po všech změnách v apachi a DNS se musí služby restartovat a v DNS se musí změnit sekvenční číslo.
+ ❗ Server musí mít v **/etc/resolve.conf** nastaven jako resolver sebe sama, po všech změnách v apachi a DNS se musí služby restartovat a v DNS se musí změnit sekvenční číslo.
 
 Rouncube funguje obecně pro jakýkoliv server SMTP, ale v nastavení rouncdube můžeme nastavit default hosta, ten se nastavuje v  **/var/www/roundcube/config/config.inc.php**, upraví se položka:
 

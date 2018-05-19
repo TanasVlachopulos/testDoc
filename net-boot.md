@@ -31,7 +31,7 @@ Na VM1 nainstalujeme a nastavíme DHCP server, ten bude přidělovat adresu a da
 
 DHCP server je defaultně vypnutý a musí se tedy zapnout v **/etc/defaul/isc-dhcp-server**, upraví se pouze řádek s konfigurací pro IPv4, tak aby distribuoval DHCP do sítě s VM2 `INTERFACESv4="enp0s8"`
 
-V **/etc/dhcp/dhcpd.conf** nastavíme **domain-name**, **domain-name-servers **\(adresa DNS serveru na kt. se budou forwardovat dotazy - ve školní síti musí být nastaven školní DNS  158.196.0.53\) a DHCP zónu, nakonec restartujeme server `service isc-dhcp-server restart`:
+V **/etc/dhcp/dhcpd.conf** nastavíme **domain-name**, **domain-name-servers** \(adresa DNS serveru na kt. se budou forwardovat dotazy - ve školní síti musí být nastaven školní DNS  158.196.0.53\) a DHCP zónu, nakonec restartujeme server `service isc-dhcp-server restart`:
 
 ```text
 option domain-name "vsb.cz";
@@ -95,7 +95,7 @@ mount 172.16.0.2:/home /home
 
 ### TFTP
 
-TFTP se používá pro zavedení kernelu na druhém VM při startu. Na VM1 nainstalujeme `tftpd-hpa`v **/etc/default/tftpd-hpa **je config, ale není jej nutné nijak upravovat.
+TFTP se používá pro zavedení kernelu na druhém VM při startu. Na VM1 nainstalujeme `tftpd-hpa`v **/etc/default/tftpd-hpa** je config, ale není jej nutné nijak upravovat.
 
 Do **/srv/tftp** jsou mapovány soubory dostupné skrze TFTP. Pro testovací účely tam vložíme nějaký soubor.
 
@@ -119,7 +119,7 @@ tar -xf netboot.tar.gz
 rm netboot.tar.gz
 ```
 
-Z archivu se vybalí soubory/odkazy/složky: \_debina-installer, ldlinux.c32, pxelinux.0, pxelinux.cfg, version.info \_k těmto souborům musíme vytvořit ještě složku **Debian** a překopírovat několik souborů ze složky **debian-installer/amd64/boot-screens/ **do složky **/srv/tftp**:
+Z archivu se vybalí soubory/odkazy/složky: \_debina-installer, ldlinux.c32, pxelinux.0, pxelinux.cfg, version.info \_k těmto souborům musíme vytvořit ještě složku **Debian** a překopírovat několik souborů ze složky **debian-installer/amd64/boot-screens/** do složky **/srv/tftp**:
 
 ```text
 root@sus:/srv/tftp$ cp debian-installer/amd64/boot-screens/libcom32.c32 .
@@ -206,7 +206,7 @@ Výsledná struktura vypadá cca takto:
 └── vesamenu.c32
 ```
 
-Ve zkopírovaném FS musíme ještě provést pár změn v **Debian/root/etc/fstab** zrušíme mount všech disků, v **Debian/root/etc/network/interfaces **zrušíme nastavení všech síťovek kromě LO, v **Debian/root/etc/dhcp/dhcpd.conf **zrušíme DHCP nastavení.
+Ve zkopírovaném FS musíme ještě provést pár změn v **Debian/root/etc/fstab** zrušíme mount všech disků, v **Debian/root/etc/network/interfaces** zrušíme nastavení všech síťovek kromě LO, v **Debian/root/etc/dhcp/dhcpd.conf** zrušíme DHCP nastavení.
 
  ❗ ❗ ❗ Pozor na to které soubory se modifikují musí se modifikovat soubory v **/srv/tftp/Debian/root** ne soubory v lokální **/etc**.
 

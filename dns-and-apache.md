@@ -19,7 +19,7 @@ iface enp0s8 inet static
 
 Na mastru i slavu nainstalujeme populární DNS server `bind9` a několik utilit, které nám pomohou při konfiguraci `dnsutils` a `udns-utils`.
 
-Na mastru v konfiguraci **/etc/bind/named.conf.options **odkomentujeme sekci **forwarders** a nastavíme nějaký vhodný DNS server na kt. se budou přeposílat DNS dotazy. Ve školní síti to musí být **158.196.0.53**, mimo školu to může být třeba 8.8.8.8, nebo 1.1.1.1.
+Na mastru v konfiguraci **/etc/bind/named.conf.options** odkomentujeme sekci **forwarders** a nastavíme nějaký vhodný DNS server na kt. se budou přeposílat DNS dotazy. Ve školní síti to musí být **158.196.0.53**, mimo školu to může být třeba 8.8.8.8, nebo 1.1.1.1.
 
 Na mastru v **/etc/bind** vytvoříme nový zónový soubor začínající na db.\* \(je zvykem ho mít pojmenovaný podle domény\) například **db.tanas.local**. Šablonou pro obsah souborů může být například snippet z [webu SUS](http://seidl.cs.vsb.cz/wiki/index.php/SUS#.C5.A0est.C3.A1_p.C5.99edn.C3.A1.C5.A1ka).
 
@@ -99,7 +99,7 @@ Apr 04 00:27:56 sus named[1111]: zone tanas.local/IN: sending notifies (serial 2
 
 Nainstalujeme Apache2 `apt install apache2`. Ihned po nainstalování zpřístupní Apache uvítací stránku, což lze ověřit externím prohlížečem, nebo z příkazové řádky prohlížečem **Lynx**.
 
-Pro vytvoření nové stránky musíme do `/var/www/html`, nebo nějaké z podsložek nakopírovat naši webovou stránku \(například wikimedia stránku\). V `/etc/apache2/sites-available` zkopírujeme výchozí webovou stránku **000-default.conf **a použijeme ji jako vzor, naše definice stránky by měla vypadat asi takto:
+Pro vytvoření nové stránky musíme do `/var/www/html`, nebo nějaké z podsložek nakopírovat naši webovou stránku \(například wikimedia stránku\). V `/etc/apache2/sites-available` zkopírujeme výchozí webovou stránku **000-default.conf** a použijeme ji jako vzor, naše definice stránky by měla vypadat asi takto:
 
 ```text
 <VirtualHost wiki.tanas.local:80>

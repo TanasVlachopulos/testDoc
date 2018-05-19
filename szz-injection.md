@@ -13,7 +13,7 @@ Po částech uspořádaná množina kroků vedoucí k dosažení cíle. Cílem j
 **Modely:**
 
 1. **Vodopádový model**
-2. **Iterační přístup **- metody RUP \(Rational Unified Process\), prototypový model, spirálový model, ingrementální model, extrémní programování 
+2. **Iterační přístup** - metody RUP \(Rational Unified Process\), prototypový model, spirálový model, ingrementální model, extrémní programování 
 3. **Agilní metodiky** - SCRUM
 4. **Programování řízené testy**
 
@@ -21,15 +21,15 @@ Po částech uspořádaná množina kroků vedoucí k dosažení cíle. Cílem j
 
 Pro hodnocení firmy z hlediska schopnosti řídit se procesy je definována stupnice CMM \(Cpability Maturity Model\)
 
-**počáteční **\(initial\) - nejsou definovány skoro žádné procesy, každý projekt je řešen ad-hoc
+**počáteční** \(initial\) - nejsou definovány skoro žádné procesy, každý projekt je řešen ad-hoc
 
-**opakovaná **\(repeatable\) - v jednotlivých projektech byly nalezeny opakované postupy, které je firma řízeně použít v každém projektu
+**opakovaná** \(repeatable\) - v jednotlivých projektech byly nalezeny opakované postupy, které je firma řízeně použít v každém projektu
 
-**definovaná **\(defined\) - softwarový proces je jasně definován a zdokumentován, používají se opakovaně kroky které byli již používány v minulosti
+**definovaná** \(defined\) - softwarový proces je jasně definován a zdokumentován, používají se opakovaně kroky které byli již používány v minulosti
 
-**řízená **\(managed\) -  plně integrovaný softwarový proces, který je firma schopna přizpůsobit požadavkům nového projekty bez ztráty kvality
+**řízená** \(managed\) -  plně integrovaný softwarový proces, který je firma schopna přizpůsobit požadavkům nového projekty bez ztráty kvality
 
-**optimalizovaná **\(optimalizing\) - vylepšování procesu pro jednotlivé projekty na základě zpětné vazby z předchozích projektů
+**optimalizovaná** \(optimalizing\) - vylepšování procesu pro jednotlivé projekty na základě zpětné vazby z předchozích projektů
 
 ![](.gitbook/assets/image.png)
 
@@ -37,7 +37,7 @@ Pro hodnocení firmy z hlediska schopnosti řídit se procesy je definována stu
 
 {% embed data="{\"url\":\"http://lucie.zolta.cz/index.php/softwarove-inzenyrstvi/35-specifikace-pozadavku\",\"type\":\"link\",\"title\":\"Specifikace požadavků\",\"icon\":{\"type\":\"icon\",\"url\":\"http://lucie.zolta.cz/templates/beez\_20/favicon.ico\",\"aspectRatio\":0}}" %}
 
-První fází je **specifikace požadavků **cílem je definovat seznam požadavků na software a popsat jeho jednotlivé funkcionality. Výsledkem je dokument, který stanovuje rozsah projektu a stává se základem smlouvy se zákazníkem.
+První fází je **specifikace požadavků** cílem je definovat seznam požadavků na software a popsat jeho jednotlivé funkcionality. Výsledkem je dokument, který stanovuje rozsah projektu a stává se základem smlouvy se zákazníkem.
 
 V této fázi se používají **use-case** diagramy pro znázornění entit systému a činností, které vykonávají. **Sekvenční diagram**, který popisuje funkci systému z pohledu objektů a zachycuje jejich vzájemnou komunikaci a interakci v závislosti na čase. **Diagram aktivit** zachycuje rozhodovací proces pro konkrétní funkci systému.
 
@@ -63,9 +63,9 @@ Návrhový vzor je obecně známy postup pro řešení konkrétního problému.
 
 zabývají se postupy pro vytváření objektů, řeší jaká třída se použije pro vytvoření instance, v jakém množství bude možné instance vyprodukovat, kdy se mají instance vytvořit, ...
 
-**Abstract Factory **\(Abstraktní továrna\) – Definuje rozhraní pro vytváření rodin objektů, které jsou na sobě závislé nebo spolu nějak souvisí bez určení konkrétní třídy. Klient je odstíněn od vytváření konkrétních instancí objektů.
+**Abstract Factory** \(Abstraktní továrna\) – Definuje rozhraní pro vytváření rodin objektů, které jsou na sobě závislé nebo spolu nějak souvisí bez určení konkrétní třídy. Klient je odstíněn od vytváření konkrétních instancí objektů.
 
-**Factory Method **\(Tovární metoda\) – Definuje rozhraní pro vytváření objektu, které nechává potomky rozhodnout o tom, jaký objekt bude fakticky vytvořen. \*Tovární metoda nechává třídy přenést vytváření na potomky.
+**Factory Method** \(Tovární metoda\) – Definuje rozhraní pro vytváření objektu, které nechává potomky rozhodnout o tom, jaký objekt bude fakticky vytvořen. \*Tovární metoda nechává třídy přenést vytváření na potomky.
 
 **Builder** \(Stavitel\) – Odděluje tvorbu komplexu objektů od jejich reprezentace tak, aby stejný proces tvorby mohl být použit i pro jiné reprezentace.
 
@@ -81,43 +81,43 @@ zabývají se postupy pro vytváření objektů, řeší jaká třída se použi
 
 Řeší uspořádání komponent a objektů, tak aby byl projekt přehlednější a odstiňují vývojáře od komplexní vnitřní implementace
 
-**Adapter **\(Adaptér\) – Potřebujete-li, aby spolu pracovaly dvě třídy, které nemají kompatibilní rozhraní. Adaptér převádí rozhraní jedné třídy na rozhraní druhé třídy.
+**Adapter** \(Adaptér\) – Potřebujete-li, aby spolu pracovaly dvě třídy, které nemají kompatibilní rozhraní. Adaptér převádí rozhraní jedné třídy na rozhraní druhé třídy.
 
-**Bridge **\(Most\) – Oddělí abstrakci od implementace, tak aby se tyto dvě mohly libovolně lišit.
+**Bridge** \(Most\) – Oddělí abstrakci od implementace, tak aby se tyto dvě mohly libovolně lišit.
 
-**Composite **\(Strom, Složenina\) – Komponuje objekty do stromové struktury a umožňuje klientovi pracovat s jednotlivými i se složenými objekty stejným způsobem.
+**Composite** \(Strom, Složenina\) – Komponuje objekty do stromové struktury a umožňuje klientovi pracovat s jednotlivými i se složenými objekty stejným způsobem.
 
-**Decorator **\(Dekorátor\) – Použijeme jej v případě, že máme nějaké objekty, kterým potřebujeme přidávat další funkce za běhu. Nový objekt si zachovává původní rozhraní.
+**Decorator** \(Dekorátor\) – Použijeme jej v případě, že máme nějaké objekty, kterým potřebujeme přidávat další funkce za běhu. Nový objekt si zachovává původní rozhraní.
 
-**Facade **\(Fasáda\) – Nabízí jednotné rozhraní k sadě rozhraní v podsystému. Definuje rozhraní vyšší úrovně, které zjednodušuje použití podsystému.
+**Facade** \(Fasáda\) – Nabízí jednotné rozhraní k sadě rozhraní v podsystému. Definuje rozhraní vyšší úrovně, které zjednodušuje použití podsystému.
 
-**Flyweight **\(Muší váha\) – Je vhodná pro použití v případě, že máte příliš mnoho malých objektů, které jsou si velmi podobné.
+**Flyweight** \(Muší váha\) – Je vhodná pro použití v případě, že máte příliš mnoho malých objektů, které jsou si velmi podobné.
 
-**Proxy **– Nabízí náhradu nebo zástupný objekt za nějaký jiný pro kontrolu přístupu k danému objektu.
+**Proxy** – Nabízí náhradu nebo zástupný objekt za nějaký jiný pro kontrolu přístupu k danému objektu.
 
 #### **Behavioral patterns** \(vzory chování\)
 
 Definuje jak se třídy a objekty budou chovat vůči svému okolí, jaké budou mít vlastnosti a za co budou zodpovědné
 
-**Observer **\(Pozorovatel\) – V případě, kdy je na jednom objektu závislých mnoho dalších objektů, poskytne vám tento vzor způsob, jak všem dát vědět, když se něco změní.
+**Observer** \(Pozorovatel\) – V případě, kdy je na jednom objektu závislých mnoho dalších objektů, poskytne vám tento vzor způsob, jak všem dát vědět, když se něco změní.
 
-**Command **\(Příkaz\) – Zapouzdřete požadavek jako objekt a tím umožněte parametrizovat klienty s různými požadavky, frontami nebo požadavky na log a podporujte operace, které jdou vzít zpět.
+**Command** \(Příkaz\) – Zapouzdřete požadavek jako objekt a tím umožněte parametrizovat klienty s různými požadavky, frontami nebo požadavky na log a podporujte operace, které jdou vzít zpět.
 
-**Interpreter **\(Interpret\) - Vytváří jazyk, což znamená definování gramatických pravidel a určení způsobu, jak vzniklý jazyk interpretovat.
+**Interpreter** \(Interpret\) - Vytváří jazyk, což znamená definování gramatických pravidel a určení způsobu, jak vzniklý jazyk interpretovat.
 
-**State **\(Stav\) – Umožňuje objektu měnit své chování, pokud se změní jeho vnitřní stav. Objekt se tváří, jako kdyby se stal instancí jiné třídy.
+**State** \(Stav\) – Umožňuje objektu měnit své chování, pokud se změní jeho vnitřní stav. Objekt se tváří, jako kdyby se stal instancí jiné třídy.
 
-**Strategy **\(Strategie\) – Zapouzdřuje nějaký druh algoritmů nebo objektů, které se mají měnit, tak aby byly pro klienta zaměnitelné.
+**Strategy** \(Strategie\) – Zapouzdřuje nějaký druh algoritmů nebo objektů, které se mají měnit, tak aby byly pro klienta zaměnitelné.
 
-**Chain of responsibility **\(Zřetězení zodpovědnosti\) – Řeší jak zaslat požadavek bez přesného vymezení objektu, který jej zpracuje.
+**Chain of responsibility** \(Zřetězení zodpovědnosti\) – Řeší jak zaslat požadavek bez přesného vymezení objektu, který jej zpracuje.
 
-**Visitor **\(Návštěvník\) – Reprezentuje operaci, která by měla být provedena na elementech objektové struktury. Visitor vám umožní definovat nové operace beze změny tříd elementů na kterých pracuje.
+**Visitor** \(Návštěvník\) – Reprezentuje operaci, která by měla být provedena na elementech objektové struktury. Visitor vám umožní definovat nové operace beze změny tříd elementů na kterých pracuje.
 
-**Iterator **\(Iterátor\) – Nabízí způsob, jak přistupovat k elementům skupinového objektu postupně bez toho, abyste vystavovali vnitřní reprezentaci tohoto objektu.
+**Iterator** \(Iterátor\) – Nabízí způsob, jak přistupovat k elementům skupinového objektu postupně bez toho, abyste vystavovali vnitřní reprezentaci tohoto objektu.
 
-**Mediator **\(Prostředník\) – Umožňuje zajistit komunikaci mezi dvěma komponentami programu, aniž by byly v přímé interakci a tím musely přesně znát poskytované metody.
+**Mediator** \(Prostředník\) – Umožňuje zajistit komunikaci mezi dvěma komponentami programu, aniž by byly v přímé interakci a tím musely přesně znát poskytované metody.
 
-**Memento **\(Memento\) – Bez porušování zapouzdření zachyťte a uložte do externího objektu interní stav objektu tak, aby ten objekt mohl být do tohoto stavu kdykoliv později vrácen.
+**Memento** \(Memento\) – Bez porušování zapouzdření zachyťte a uložte do externího objektu interní stav objektu tak, aby ten objekt mohl být do tohoto stavu kdykoliv později vrácen.
 
 **Template method** \(Šablonová metoda\) – Definuje kostru toho, jak nějaký algoritmus funguje, s tím, že některé kroky nechává na potomcích. Umožňuje tak potomkům upravit určité kroky algoritmu bez toho, aby mohli měnit strukturu algoritmu.
 
@@ -132,19 +132,19 @@ Definuje jak se třídy a objekty budou chovat vůči svému okolí, jaké budou
 
 #### Rysy OOP
 
-**Abstrakce **- program se může oprostit od detailů implementace používaných komponent a přistupovat k nim jako k black boxu.
+**Abstrakce** - program se může oprostit od detailů implementace používaných komponent a přistupovat k nim jako k black boxu.
 
-**Zapouzdření **- metody a vlastnosti objektů mohou být soukromé, ostatní entity na ně nemohou sahat a narušovat konzistenci objektu
+**Zapouzdření** - metody a vlastnosti objektů mohou být soukromé, ostatní entity na ně nemohou sahat a narušovat konzistenci objektu
 
 **Skládání** - objekt může obsahovat jiné objekty
 
-**Delegování **- objekt může volat metody jiných objektů
+**Delegování** - objekt může volat metody jiných objektů
 
-**Dědičnost **- třída může dědit s jiný třídy, získá tak její vlastnosti a metody, které může rozšířit
+**Dědičnost** - třída může dědit s jiný třídy, získá tak její vlastnosti a metody, které může rozšířit
 
-**Polymorfismus **- objekty mohou vystupovat ve stejné roli i když jsou instancemi různých tříd, důležité je aby měli stejné metody, které ale může každý objekt implementovat jiným způsobem.
+**Polymorfismus** - objekty mohou vystupovat ve stejné roli i když jsou instancemi různých tříd, důležité je aby měli stejné metody, které ale může každý objekt implementovat jiným způsobem.
 
-**Genericita **- třída používá neurčité datové typu které může při používání programátor předefinovat, často používaná především s polymorfismem kdy generická třída může nést různé objekty, které ale mají společné vlastnosti
+**Genericita** - třída používá neurčité datové typu které může při používání programátor předefinovat, často používaná především s polymorfismem kdy generická třída může nést různé objekty, které ale mají společné vlastnosti
 
 #### Třída
 
