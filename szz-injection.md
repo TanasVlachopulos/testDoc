@@ -180,3 +180,35 @@ Python - GC založené na počítání referencí; problém vzniku kruhových re
 
 Java/C\# - periodicky odstraňuje objekty s null referencí; běží v separátním vlákně; trvá déle než se paměť uvolní
 
+## OSMZ
+
+### Scheduling
+
+Systém pro přidělování výpočetního času procesům, které jsou připraveny provádět úlohy. Probíhá ve dvou fázích: **plánování procesu** kdy OS určí kdy bude proces připuštěn k CPU a **vyslání procesu \(dispatch\)** fyzické přidání výpočetního času procesu. Po plánovači se ideálně vyžadují tyto vlastnosti: 
+
+* férovost \(procesy by měli dostat tolik času kolik si zaslouží\)
+* vynucování bezpečnostních politik
+* efektivnost \(udržet procesor co nejvytíženější\), 
+* minimalizace času odezvy pro interagující uživatele
+* propustnost \(maximalizace počtu úloh zpracovaných za jednotku času\)
+* turnaround \(minimalizace času čekání na výsledek\)
+
+Podle toho jestli procesy více přistupují k IO nebo více pracují s CPU se dělí do dvou skupin:
+
+![](.gitbook/assets/image%20%281%29.png)
+
+#### Plánovací algoritmy
+
+1. FIFO - procesy se řadí do fronty a vyřizují se v daném pořadí; je nepreemptivní proces se musí vzdát CPU aby se začal vykonávat další proces; velká čekací doba
+2. LIFO - last in first out; podobné jako FIFO
+3. Shortest next job - jako první jdou na řadu procesy s nejnižšími požadavky na CPU čas; je nepreemptivní
+4. Shortest remaining time first - jako první jdou na řadu procesy; procesy kt. se blíží deadline musí být zpracovány jako první; nepreemptivní
+5. Round robin - každý proces má přidělenou periodu 10-100 ms, všechny mají stejnou prioritu; proces je vyjmut z fronty a je mu dán po omezený čas CPU, po vypršení času se vrátí na konec fronty; preemptivní; pokud známe počet procesů ve frontě můžeme odhadnout dobu trvání
+6. Multi feedback queue - procesy jsou rozděleny do několika front podle priority; krátké interaktivní IO procesy mají vysokou prioritu, dlouho trvající úlohy na pozadí nízkou; CPU obsluhuje jako první prioritní úlohy ve stavu ready; preemptivní; nejčastěji používané
+7. Garantované plánování - dokáže rozdělit čas CPU mezi více uživatelů OS rovnoměrně
+8. loterijní plánování -  proces dostane tiket na používání CPU a po ukončení práce ho předá spolupracujícímu procesu; řeší problém vyhladovění; nepreemptivní s vysokou zodpovědností
+
+Realtime plánování - dělí se na hard RT a soft RT, vhodné zejména pro periodické procesy; vyskytují se algoritmy Earliest deadline first 
+
+
+
