@@ -180,7 +180,7 @@ Python - GC založené na počítání referencí; problém vzniku kruhových re
 
 Java/C\# - periodicky odstraňuje objekty s null referencí; běží v separátním vlákně; trvá déle než se paměť uvolní
 
-## OSMZ
+## OSMZ/OSY/SOJ/PVOS
 
 ### Scheduling
 
@@ -209,6 +209,23 @@ Podle toho jestli procesy více přistupují k IO nebo více pracují s CPU se d
 8. loterijní plánování -  proces dostane tiket na používání CPU a po ukončení práce ho předá spolupracujícímu procesu; řeší problém vyhladovění; nepreemptivní s vysokou zodpovědností
 
 Realtime plánování - dělí se na hard RT a soft RT, vhodné zejména pro periodické procesy; vyskytují se algoritmy Earliest deadline first 
+
+### Procesy
+
+#### Kritická sekce
+
+Část programu, ve které se přistupuje ke sdílenému médiu. V jedné kritické sekci by nikdy neměl být více než jeden proces/vlákno, jinak může dojít k chybě souběhu. Snaha o vyhnutí se se kolizím procesů v kritické sekci říkáme vzájemné vyloučení. Pro metody vzájemného vyloučení platí tyto podmínky:
+
+1. Dva procesy nesmí být uvnitř jedné kritické sekce
+2. Na řešení nesmí mít vliv počet a rychlost CPU
+3. Procesy mimo kritickou sekci nesmí blokovat jiné procesy
+4. Procesy nesmí čekat nekonečně dlouho před kritickou sekcí
+
+Pro vzájemné vyloučení se používají tyto metody:
+
+* **zákaz přerušení** - procesor zakáže přerušení před kritickou sekcí, díky tomu nemůže přijít další proces kt. nahradí aktuální proces; nelze použít kvůli nebezpečí zablokování systému a více procesorům; používá se interně v OS
+* **petersonovo řešení** - první funkční softwarové řešení; používá pole kde každá položka představuje jeden proces a proměnou turn, která definuje aktuální proces v kritické sekci;
+*  Instrukce TSL
 
 
 
