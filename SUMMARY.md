@@ -11,4 +11,5 @@
 * [Postfix & Dovecot & Roundcube](postfix-draft.md)
 * [BPSDC notes](bpsdc-notes.md)
 * [SZZ injection](szz-injection.md)
+* [MicroPython ESP32](micropython-esp32.md)
 
