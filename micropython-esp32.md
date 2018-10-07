@@ -49,6 +49,7 @@ I was not able to run ampy or rshell under Windows. In WSL and PS I am getting e
 * Open Python script terminal on board \(exitv with ctrl+X\) `repl`
 * You can list content of board storage with  `ls /pyboard`
 * You can use also do `cd, cat, cp, edit, mkdir, rm, rsync`
+* Alternatively you can connect with minicom `minicom --baudrate 115200 --device /dev/ttyUSB1`
 
 
 
