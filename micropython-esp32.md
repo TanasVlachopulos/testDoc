@@ -31,7 +31,10 @@ Hard resetting via RTS pin...
 ```
 
 * Before uploading firmware is good to erase flash memory `sudo esptool.py --port /dev/ttyS5 erase_flash`
-* Flash firmware  for **ESP32**: `esptool.py --chip esp32 --port /dev/ttyS5 write_flash -z 0x1000 esp32-20181007-v1.9.4-631-g338635ccc.bin` for ESP8266: `esptool.py --chip esp8266 --port /dev/ttyUSB1 write_flash --flash_size=detect 0 esp8266-20180511-v1.9.4.bin`
+* Flash firmware  for **ESP32**: `esptool.py --chip esp32 --port /dev/ttyS5 write_flash -z 0x1000 esp32-20181007-v1.9.4-631-g338635ccc.bin` for ESP8266: `esptool.py --chip esp8266 --port /dev/ttyUSB1 write_flash --flash_size=detect 0 esp8266-20180511-v1.9.4.bin`Specifically for Sonoff switches with ESP8266: `esptool.py --chip esp8266 --port /dev/ttyUSB0 write_flash -fs 1MB -fm dout 0x0 esp8266-20180511-v1.9.4.bin`
+
+Sonoff switches can be recognized by flash manufacturer. As result of flash\_id you will get  _Manufacturer "5e"_   
+
 
 ### Connect to device
 

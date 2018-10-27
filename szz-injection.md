@@ -4,9 +4,9 @@
 
 ### Softwarový proces
 
-{% embed data="{\"url\":\"http://lucie.zolta.cz/index.php/softwarove-inzenyrstvi/34-softwarovy-proces\",\"type\":\"link\",\"title\":\"Softwarový proces\",\"icon\":{\"type\":\"icon\",\"url\":\"http://lucie.zolta.cz/templates/beez\_20/favicon.ico\",\"aspectRatio\":0}}" %}
+{% embed url="http://lucie.zolta.cz/index.php/softwarove-inzenyrstvi/34-softwarovy-proces" %}
 
-{% embed data="{\"url\":\"https://cs.wikipedia.org/wiki/Metodika\_vývoje\_softwaru\#Spirálový\_přístup\",\"type\":\"link\",\"title\":\"Metodika vývoje softwaru\",\"description\":\"Metodika vývoje softwaru \(někdy nepřesně označovaná jako „metodologie vývoje softwaru“\) je souhrn postupů, pravidel a nástrojů \(frameworků\) používaný pro návrh, plánování a řízení vývoje software. Metodikou se též rozumí využití takového frameworku nebo dalších specifických postupů pracovním týmem nebo celou organizací při vývoji aplikačního software nebo informačního systému.\",\"icon\":{\"type\":\"icon\",\"url\":\"https://cs.wikipedia.org/static/apple-touch/wikipedia.png\",\"aspectRatio\":0},\"thumbnail\":{\"type\":\"thumbnail\",\"url\":\"//upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Three\_software\_development\_patterns\_mashed\_together\_cz.svg/220px-Three\_software\_development\_patterns\_mashed\_together\_cz.svg.png\",\"width\":220,\"height\":208,\"aspectRatio\":0.9454545454545454}}" %}
+{% embed url="https://cs.wikipedia.org/wiki/Metodika\_vývoje\_softwaru\#Spirálový\_přístup" %}
 
 Po částech uspořádaná množina kroků vedoucí k dosažení cíle. Cílem je obvykle nějaký software.
 
@@ -35,7 +35,7 @@ Pro hodnocení firmy z hlediska schopnosti řídit se procesy je definována stu
 
 ### Počáteční fáze vývoje
 
-{% embed data="{\"url\":\"http://lucie.zolta.cz/index.php/softwarove-inzenyrstvi/35-specifikace-pozadavku\",\"type\":\"link\",\"title\":\"Specifikace požadavků\",\"icon\":{\"type\":\"icon\",\"url\":\"http://lucie.zolta.cz/templates/beez\_20/favicon.ico\",\"aspectRatio\":0}}" %}
+{% embed url="http://lucie.zolta.cz/index.php/softwarove-inzenyrstvi/35-specifikace-pozadavku" %}
 
 První fází je **specifikace požadavků** cílem je definovat seznam požadavků na software a popsat jeho jednotlivé funkcionality. Výsledkem je dokument, který stanovuje rozsah projektu a stává se základem smlouvy se zákazníkem.
 
@@ -43,7 +43,7 @@ V této fázi se používají **use-case** diagramy pro znázornění entit syst
 
 ### Fáze návrhu 
 
-{% embed data="{\"url\":\"http://lucie.zolta.cz/index.php/softwarove-inzenyrstvi/36-navrh-implementace\",\"type\":\"link\",\"title\":\"Návrh implementace\",\"icon\":{\"type\":\"icon\",\"url\":\"http://lucie.zolta.cz/templates/beez\_20/favicon.ico\",\"aspectRatio\":0}}" %}
+{% embed url="http://lucie.zolta.cz/index.php/softwarove-inzenyrstvi/36-navrh-implementace" %}
 
 V této fázi se vytváří abstraktní náhled na implementaci systému. Definují se entity v systému, jejich vztahy a procesy nad nimi. Výstup fáze návrhu slouží jako vstupní dokument pro implementační tým.
 
@@ -164,7 +164,7 @@ Tento typ třídy může obsahovat implementaci metod i pouze deklarované metod
 
 ### Správa paměti
 
-{% embed data="{\"url\":\"http://www.cs.vsb.cz/benes/vyuka/pte/texty/pamet/index.html\",\"type\":\"link\",\"title\":\"Správa paměti\"}" %}
+{% embed url="http://www.cs.vsb.cz/benes/vyuka/pte/texty/pamet/index.html" %}
 
 Problémy:
 
