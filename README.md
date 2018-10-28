@@ -39,8 +39,8 @@ Nastavení bezheslového přihlašování
 `ssh-keygen -t rsa -f ~/.ssh/id_rsa.vsb`
 
 1. heslo necháme prázdné \(odklepneme enterem\)
-2. vytvoříme soubor \`~/.ssh/config\` \(viz obsah souboru config\)
-3. změníme práva souboru config \`chmod 600 ~/.ssh/config\`
+2. vytvoříme soubor `~/.ssh/config` \(viz obsah souboru config\)
+3. změníme práva souboru config `chmod 600 ~/.ssh/config`
 4. pomocí nástroje copy-id nahrajeme na vzdálený server náš klíč
 
 `ssh-copy-id -i ~/.ssh/id_rsa.vsb.pub vla0054@linedu.vsb.cz`
@@ -51,7 +51,7 @@ Nastavení bezheslového přihlašování
 
 `rsync --rsh="ssh" --verbose -r soj-cv03/ vsb:/home/fei/vla0054/soj-cv03`
 
-1. na vzdáleném serveru ověříme zda ve složce \`~/.ssh/authorized\_keys\` je náš klíč a zda tam nejsou nějaké duplicity
+1. na vzdáleném serveru ověříme zda ve složce `~/.ssh/authorized_keys` je náš klíč a zda tam nejsou nějaké duplicity
 
 Obsah souboru config:
 
