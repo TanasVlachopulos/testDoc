@@ -1,15 +1,15 @@
-# MicroPython ESP32
+# MicroPython ESP32/ESP8266
 
 ## Flash firmware
 
-Latest firmware for ESP32 and ESP8266 boards can be found at official MicroPython website [http://micropython.org/download\#esp32](http://micropython.org/download#esp32)
+Latest firmware for ESP32 and ESP8266 boards can be found at official MicroPython website: [http://micropython.org/download](http://micropython.org/download)
 
 {% hint style="info" %}
  I am using Ubuntu 18 in Windows Subsystem for Linux, some steps are specific for WSL environment.
 {% endhint %}
 
 * Install ESP tools `sudo pip3 install esptool`
-* Connect device over USB and check serial port number in Windows device manager, Windows COM ports are mapped to linux serial devices, e.g. COM5 = /dev/ttyS5. On Linux you can list recently connected devices via `dmsg`.
+* Connect device over USB and check serial port number in Windows device manager, Windows COM ports are mapped to linux serial devices, e.g. COM5 = /dev/ttyS5. On Linux you can list recently connected devices via `dmesg`.
 * Check if connected device communicate correctly `sudo esptool.py --port /dev/ttyS5 flash_id`
 * You will get similar result:
 
