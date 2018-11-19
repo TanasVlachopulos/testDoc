@@ -30,7 +30,5 @@
 10. odpojíme umístní /tmp/sdX -&gt; `umount /tmp/sdX`
 11. **df** - zobrazuje zaplnění disků
 
-> **\[warning\] For warning**
->
-> Use this for warning messages.
+
 
