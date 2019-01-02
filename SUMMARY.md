@@ -13,4 +13,5 @@
 * [SZZ injection](szz-injection.md)
 * [MicroPython ESP32/ESP8266](micropython-esp32.md)
 * [HomeServer](homeserver.md)
+* [RabbitMQ](rabbitmq.md)
 
