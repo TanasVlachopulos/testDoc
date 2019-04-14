@@ -31,6 +31,8 @@ sudo chown -R hass-user:hass-user /home/hass-user/.homeassistant/
 
 {% embed url="https://www.home-assistant.io/docs/installation/armbian/" %}
 
+
+
 {% embed url="https://www.home-assistant.io/docs/installation/raspberry-pi/" %}
 
 ### Start Home Assistant after boot
@@ -72,4 +74,27 @@ Restart service and show boot log
 #### References
 
 {% embed url="https://www.home-assistant.io/docs/autostart/systemd/" %}
+
+## Docker 
+
+### Basic commands
+
+```bash
+# list containers 
+docker container ls --all
+# start already created container 
+docker start container_name
+# update container policy, e.g. autostart after reboot
+docker update --restart unless-stopped container_name
+```
+
+### Network
+
+Containers are available on exposed port from other network devices, e.g. `docker run -p 8086:8086` is exposed on port 8086. But if you want to established communication between containers you need to create network between them. The most basic type of network is bridge.
+
+{% embed url="https://docs.docker.com/network/bridge/" %}
+
+If you want to address other container from container, both have to be inside a one bridge and you have to address other container by his domain name \(not IP address\).
+
+
 
