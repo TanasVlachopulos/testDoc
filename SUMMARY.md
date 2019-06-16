@@ -15,4 +15,5 @@
 * [HomeServer](homeserver.md)
 * [RabbitMQ](rabbitmq.md)
 * [CPM coock book](cpm-coock-book.md)
+* [InfluxDb](influxdb.md)
 
