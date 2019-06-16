@@ -16,4 +16,5 @@
 * [RabbitMQ](rabbitmq.md)
 * [CPM coock book](cpm-coock-book.md)
 * [InfluxDb](influxdb.md)
+* [Influx DB](influx-db.md)
 
