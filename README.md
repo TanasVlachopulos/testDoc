@@ -159,78 +159,67 @@ Zrušení přesměrování
 
 Při instalaci z dvd je jako zdroj apt balíčku nastaveno defaultně dvd následující úpravou source listu se jako zdroj balíčků nastaví online repozitář v \`/etc/apt/source.list\`
 
-\`\`\`
+```text
+# deb cdrom:[Debian GNU/Linux 8.3.0 _Jessie_ - Official amd64 DVD Binary-1 20160123-19:03]/ jessie contrib main
+# deb cdrom:[Debian GNU/Linux 8.3.0 _Jessie_ - Official amd64 DVD Binary-1 20160123-19:03]/ jessie contrib main
+# deb 
+http://security.debian.org/
+ jessie/updates main contrib
+# deb-src 
+http://security.debian.org/
+ jessie/updates main contrib
+deb 
+http://httpredir.debian.org/debian
+ jessie main
+deb-src 
+http://httpredir.debian.org/debian
+ jessie main
+deb 
+http://httpredir.debian.org/debian
+ jessie-updates main
+deb-src 
+http://httpredir.debian.org/debian
+ jessie-updates main
+deb 
+http://security.debian.org/
+ jessie/updates main
+deb-src 
+http://security.debian.org/
+ jessie/updates main
+```
 
-\# deb cdrom:\[Debian GNU/Linux 8.3.0 \_Jessie\_ - Official amd64 DVD Binary-1 20160123-19:03\]/ jessie contrib main
-
-\# deb cdrom:\[Debian GNU/Linux 8.3.0 \_Jessie\_ - Official amd64 DVD Binary-1 20160123-19:03\]/ jessie contrib main
-
-\# deb [http://security.debian.org/](http://security.debian.org/) jessie/updates main contrib
-
-\# deb-src [http://security.debian.org/](http://security.debian.org/) jessie/updates main contrib
-
-deb [http://httpredir.debian.org/debian](http://httpredir.debian.org/debian) jessie main
-
-deb-src [http://httpredir.debian.org/debian](http://httpredir.debian.org/debian) jessie main
-
-deb [http://httpredir.debian.org/debian](http://httpredir.debian.org/debian) jessie-updates main
-
-deb-src [http://httpredir.debian.org/debian](http://httpredir.debian.org/debian) jessie-updates main
-
-deb [http://security.debian.org/](http://security.debian.org/) jessie/updates main
-
-deb-src [http://security.debian.org/](http://security.debian.org/) jessie/updates main
-
-\`\`\`
-
-\*\*autodopňování parametrů příkazů:\*\*
+**autodopňování parametrů příkazů:**
 
 1. nainstalovat balík apt-get install bash-completion
 2. do souboru ~/.bashrc přidat:
 
-\`\`\`
-
-\# enable bash completion in interactive shells
-
+```text
+# enable bash completion in interactive shells
 if ! shopt -oq posix; then
-
-if \[ -f /usr/share/bash-completion/bash\_completion \]; then
-
-```text
+if [ -f /usr/share/bash-completion/bash_completion ]; then
 . /usr/share/bash-completion/bash\_completion
-```
-
-elif \[ -f /etc/bash\_completion \]; then
-
-```text
+elif [ -f /etc/bash_completion ]; then
 . /etc/bash\_completion
+fi
+fi
 ```
 
-fi
-
-fi
-
-\`\`\`
-
-\*\*barevný shell:\*\*
+**barevný shell:**
 
 do souboru ~/.bashrc pro roota přidat pro červenou barvu:
 
-\`\`\`
-
-\# Colored prompt
-
-PS1='${debian\_chroot:+\($debian\_chroot\)}\\[\033\[01;31m\\]\u@\h\\[\033\[00m\\]:\\[\033\[01;33m\\]\w\[\033\[00m\\]$ '
-
-\`\`\`
+```text
+# Colored prompt
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w[\033[00m\]$ '
+```
 
 do souboru ~/.bashrc pro uživatele přidat:
 
-\`\`\`
+```text
+force_color_prompt=yes
+```
 
-force\_color\_prompt=yes
 
-\`\`\`
 
 Barvy: [http://misc.flogisoft.com/bash/tip\_colors\_and\_formatting](http://misc.flogisoft.com/bash/tip_colors_and_formatting)
 

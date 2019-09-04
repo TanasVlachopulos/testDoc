@@ -54,5 +54,11 @@ I was not able to run ampy or rshell under Windows. In WSL and PS I am getting e
 * You can use also do `cd, cat, cp, edit, mkdir, rm, rsync`
 * Alternatively you can connect with minicom `minicom --baudrate 115200 --device /dev/ttyUSB1`
 
+### Send source files to programmer
 
+Programmer is a Linux computer directly connected to ESP board. In my case it is Orange pi. Data are distributed over SSH.
+
+```bash
+sudo rsync --rsh="ssh -l tanas" -r *  orangepi-wifi:/home/tanas/iot_hub
+```
 
