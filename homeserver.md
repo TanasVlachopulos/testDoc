@@ -77,6 +77,12 @@ Restart service and show boot log
 
 ## Docker 
 
+### Install  docker
+
+Apply just **step 4**. In **step** **c** change user to current server user \(probably _tanas_\). In **step e** replace version _stretch_ with current debian  version \(buster, ...\).
+
+{% embed url="https://www.docker.com/blog/happy-pi-day-docker-raspberry-pi/" %}
+
 ### Basic commands
 
 ```bash
