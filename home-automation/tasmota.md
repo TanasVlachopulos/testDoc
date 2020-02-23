@@ -22,7 +22,9 @@ description: About tasmota firmware in home automation
 
 {% embed url="https://tasmota.github.io/docs/\#/installation/Initial-Configuration" %}
 
-
+```text
+Backlog ssid1 Tanet; password1 Ne94lEz174dO54wIfI; ssid2 TanetTmp; password2 Ne94lEz174dO54wIfI
+```
 
 ## Configure automation
 

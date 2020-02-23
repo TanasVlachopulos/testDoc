@@ -15,8 +15,8 @@
 
 ## Home automation
 
-* [MicroPython ESP32/ESP8266](home-automation/micropython-esp32.md)
-* [Influx DB](home-automation/influx-db.md)
-* [HomeServer](home-automation/homeserver.md)
+* [MicroPython ESP32/ESP8266](micropython-esp32.md)
+* [Influx DB](influx-db.md)
+* [HomeServer](homeserver.md)
 * [Tasmota](home-automation/tasmota.md)
 
