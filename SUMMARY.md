@@ -12,11 +12,12 @@
 * [BPSDC notes](bpsdc-notes.md)
 * [SZZ injection](szz-injection.md)
 * [CPM coock book](cpm-coock-book.md)
+* [Mongo DB](mongo-db.md)
 
 ## Home automation
 
-* [MicroPython ESP32/ESP8266](micropython-esp32.md)
-* [Influx DB](influx-db.md)
-* [HomeServer](homeserver.md)
+* [MicroPython ESP32/ESP8266](home-automation/micropython-esp32.md)
+* [Influx DB](home-automation/influx-db.md)
+* [HomeServer](home-automation/homeserver.md)
 * [Tasmota](home-automation/tasmota.md)
 
